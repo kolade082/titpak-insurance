@@ -18,15 +18,24 @@ import MenuIcon from '@mui/icons-material/Menu'
 import CloseIcon from '@mui/icons-material/Close'
 import ExpandLess from '@mui/icons-material/ExpandLess'
 import ExpandMore from '@mui/icons-material/ExpandMore'
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown'
 import { Link } from "react-router-dom"
 
-import logo from '../assets/logo.png'
+import logo from '../assets/logo.jpg'
 
 export default function NavBar() {
   // Desktop dropdown
   const [anchorEl, setAnchorEl] = useState(null)
   const open = Boolean(anchorEl)
-  const handleMenuOpen = (event) => setAnchorEl(event.currentTarget)
+  
+  const handleMenuToggle = (event) => {
+    if (open) {
+      setAnchorEl(null)
+    } else {
+      setAnchorEl(event.currentTarget)
+    }
+  }
+  
   const handleMenuClose = () => setAnchorEl(null)
 
   // Mobile drawer
@@ -46,8 +55,9 @@ export default function NavBar() {
   ]
 
   const menuItems = [
-    { text: 'Home', link: '/' },
+    { text: 'Home', link: '/titpak-insurance/' },
     { text: 'Who We Are', link: '/who-we-are' },
+    { text: 'Claims', link: '/claims' },
     { text: 'Contact', link: '/contact' },
     { text: 'FAQs', link: '/faqs' },
   ]
@@ -55,24 +65,93 @@ export default function NavBar() {
   return (
     <>
       {/* AppBar */}
-      <AppBar position="static" sx={{ backgroundColor: "#003366" }}>
-        <Toolbar>
+      <AppBar position="static" sx={{ 
+        backgroundColor: "#003366",
+        boxShadow: '0 4px 20px rgba(0,0,0,0.1)',
+        borderBottom: '1px solid rgba(255,255,255,0.1)'
+      }}>
+        <Toolbar sx={{ py: 1 }}>
           <Box sx={{ flexGrow: 1 }}>
-            <Link to="/">
-              <img src={logo} alt="Titpak Insurance Logo" style={{ height: 50 }} />
+            <Link to="/titpak-insurance/" style={{ textDecoration: 'none' }}>
+              <img 
+                src={logo} 
+                alt="Titpak Insurance Logo" 
+                style={{ 
+                  height: 70,
+                  transition: 'transform 0.2s ease',
+                  cursor: 'pointer'
+                }} 
+                onMouseEnter={(e) => e.target.style.transform = 'scale(1.05)'}
+                onMouseLeave={(e) => e.target.style.transform = 'scale(1)'}
+              />
             </Link>
           </Box>
 
           {/* Desktop Menu */}
-          <Box sx={{ display: { xs: 'none', sm: 'flex' }, alignItems: 'center' }}>
-            <Button color="inherit" component={Link} to="/">Home</Button>
-            <Button color="inherit" component={Link} to="/who-we-are">Who We Are</Button>
+          <Box sx={{ display: { xs: 'none', sm: 'flex' }, alignItems: 'center', gap: 1 }}>
+            <Button 
+              color="inherit" 
+              component={Link} 
+              to="/titpak-insurance/"
+              sx={{
+                px: 2,
+                py: 1,
+                borderRadius: 2,
+                textTransform: 'none',
+                fontWeight: 500,
+                fontSize: '1rem',
+                '&:hover': { 
+                  backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                  transform: 'translateY(-1px)'
+                },
+                transition: 'all 0.2s ease'
+              }}
+            >
+              Home
+            </Button>
+            <Button 
+              color="inherit" 
+              component={Link} 
+              to="/who-we-are"
+              sx={{
+                px: 2,
+                py: 1,
+                borderRadius: 2,
+                textTransform: 'none',
+                fontWeight: 500,
+                fontSize: '1rem',
+                '&:hover': { 
+                  backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                  transform: 'translateY(-1px)'
+                },
+                transition: 'all 0.2s ease'
+              }}
+            >
+              Who We Are
+            </Button>
 
             {/* What We Do Dropdown */}
             <Button
               color="inherit"
-              onMouseEnter={handleMenuOpen}
-              onMouseLeave={handleMenuClose}
+              onClick={handleMenuToggle}
+              endIcon={<KeyboardArrowDownIcon sx={{ 
+                transform: open ? 'rotate(180deg)' : 'rotate(0deg)',
+                transition: 'transform 0.2s ease'
+              }} />}
+              sx={{ 
+                px: 2,
+                py: 1,
+                borderRadius: 2,
+                textTransform: 'none',
+                fontWeight: 500,
+                fontSize: '1rem',
+                cursor: 'pointer',
+                '&:hover': { 
+                  backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                  transform: 'translateY(-1px)'
+                },
+                transition: 'all 0.2s ease'
+              }}
             >
               What We Do
             </Button>
@@ -80,17 +159,104 @@ export default function NavBar() {
               anchorEl={anchorEl}
               open={open}
               onClose={handleMenuClose}
-              MenuListProps={{ onMouseEnter: handleMenuOpen, onMouseLeave: handleMenuClose }}
+              PaperProps={{
+                sx: {
+                  mt: 1,
+                  minWidth: 220,
+                  boxShadow: '0 8px 32px rgba(0,0,0,0.15)',
+                  border: '1px solid rgba(0,0,0,0.08)',
+                  borderRadius: 2,
+                  overflow: 'hidden'
+                }
+              }}
             >
               {whatWeDoItems.map(item => (
-                <MenuItem key={item.text} component={Link} to={item.link} onClick={handleMenuClose}>
+                <MenuItem 
+                  key={item.text} 
+                  component={Link} 
+                  to={item.link} 
+                  onClick={handleMenuClose}
+                  sx={{
+                    py: 1.5,
+                    px: 3,
+                    fontSize: '0.95rem',
+                    fontWeight: 500,
+                    color: '#003366',
+                    borderBottom: '1px solid rgba(0,0,0,0.04)',
+                    '&:last-child': { borderBottom: 'none' },
+                    '&:hover': { 
+                      backgroundColor: 'rgba(0, 51, 102, 0.06)',
+                      transform: 'translateX(4px)',
+                      color: '#004a99'
+                    },
+                    transition: 'all 0.2s ease'
+                  }}
+                >
                   {item.text}
                 </MenuItem>
               ))}
             </Menu>
 
-            <Button color="inherit" component={Link} to="/contact">Contact</Button>
-            <Button color="inherit" component={Link} to="/faqs">FAQs</Button>
+            <Button 
+              color="inherit" 
+              component={Link} 
+              to="/claims"
+              sx={{
+                px: 2,
+                py: 1,
+                borderRadius: 2,
+                textTransform: 'none',
+                fontWeight: 500,
+                fontSize: '1rem',
+                '&:hover': { 
+                  backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                  transform: 'translateY(-1px)'
+                },
+                transition: 'all 0.2s ease'
+              }}
+            >
+              Claims
+            </Button>
+            <Button 
+              color="inherit" 
+              component={Link} 
+              to="/contact"
+              sx={{
+                px: 2,
+                py: 1,
+                borderRadius: 2,
+                textTransform: 'none',
+                fontWeight: 500,
+                fontSize: '1rem',
+                '&:hover': { 
+                  backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                  transform: 'translateY(-1px)'
+                },
+                transition: 'all 0.2s ease'
+              }}
+            >
+              Contact
+            </Button>
+            <Button 
+              color="inherit" 
+              component={Link} 
+              to="/faqs"
+              sx={{
+                px: 2,
+                py: 1,
+                borderRadius: 2,
+                textTransform: 'none',
+                fontWeight: 500,
+                fontSize: '1rem',
+                '&:hover': { 
+                  backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                  transform: 'translateY(-1px)'
+                },
+                transition: 'all 0.2s ease'
+              }}
+            >
+              FAQs
+            </Button>
           </Box>
 
           {/* Mobile Hamburger */}
@@ -115,31 +281,101 @@ export default function NavBar() {
             </IconButton>
           </Box>
 
-          <List>
+          <List sx={{ px: 1 }}>
             {menuItems.slice(0, 2).map(item => (
-              <ListItem button key={item.text} component={Link} to={item.link} onClick={() => setDrawerOpen(false)}>
-                <ListItemText primary={item.text} sx={{ color: 'black' }} />
+              <ListItem 
+                button 
+                key={item.text} 
+                component={Link} 
+                to={item.link} 
+                onClick={() => setDrawerOpen(false)}
+                sx={{
+                  borderRadius: 2,
+                  mb: 0.5,
+                  '&:hover': { backgroundColor: 'rgba(0, 51, 102, 0.04)' }
+                }}
+              >
+                <ListItemText 
+                  primary={item.text} 
+                  sx={{ 
+                    color: '#003366', 
+                    fontWeight: 500,
+                    '& .MuiTypography-root': { fontSize: '1rem' }
+                  }} 
+                />
               </ListItem>
             ))}
 
             {/* What We Do collapsible */}
-            <ListItem button onClick={() => setWhatWeDoOpen(prev => !prev)}>
-              <ListItemText primary="What We Do" sx={{ color: 'black' }} />
-              {whatWeDoOpen ? <ExpandLess /> : <ExpandMore />}
+            <ListItem 
+              button 
+              onClick={() => setWhatWeDoOpen(prev => !prev)}
+              sx={{
+                borderRadius: 2,
+                mb: 0.5,
+                '&:hover': { backgroundColor: 'rgba(0, 51, 102, 0.04)' }
+              }}
+            >
+              <ListItemText 
+                primary="What We Do" 
+                sx={{ 
+                  color: '#003366', 
+                  fontWeight: 500,
+                  '& .MuiTypography-root': { fontSize: '1rem' }
+                }} 
+              />
+              {whatWeDoOpen ? <ExpandLess sx={{ color: '#003366' }} /> : <ExpandMore sx={{ color: '#003366' }} />}
             </ListItem>
             <Collapse in={whatWeDoOpen} timeout="auto" unmountOnExit>
               <List component="div" disablePadding>
                 {whatWeDoItems.map(sub => (
-                  <ListItem key={sub.text} button component={Link} to={sub.link} onClick={() => setDrawerOpen(false)} sx={{ pl: 4 }}>
-                    <ListItemText primary={sub.text} sx={{ color: 'black' }} />
+                  <ListItem 
+                    key={sub.text} 
+                    button 
+                    component={Link} 
+                    to={sub.link} 
+                    onClick={() => setDrawerOpen(false)} 
+                    sx={{ 
+                      pl: 4, 
+                      borderRadius: 2,
+                      ml: 1,
+                      mb: 0.5,
+                      '&:hover': { backgroundColor: 'rgba(0, 51, 102, 0.04)' }
+                    }}
+                  >
+                    <ListItemText 
+                      primary={sub.text} 
+                      sx={{ 
+                        color: '#666', 
+                        '& .MuiTypography-root': { fontSize: '0.9rem' }
+                      }} 
+                    />
                   </ListItem>
                 ))}
               </List>
             </Collapse>
 
             {menuItems.slice(2).map(item => (
-              <ListItem button key={item.text} component={Link} to={item.link} onClick={() => setDrawerOpen(false)}>
-                <ListItemText primary={item.text} sx={{ color: 'black' }} />
+              <ListItem 
+                button 
+                key={item.text} 
+                component={Link} 
+                to={item.link} 
+                onClick={() => setDrawerOpen(false)}
+                sx={{
+                  borderRadius: 2,
+                  mb: 0.5,
+                  '&:hover': { backgroundColor: 'rgba(0, 51, 102, 0.04)' }
+                }}
+              >
+                <ListItemText 
+                  primary={item.text} 
+                  sx={{ 
+                    color: '#003366', 
+                    fontWeight: 500,
+                    '& .MuiTypography-root': { fontSize: '1rem' }
+                  }} 
+                />
               </ListItem>
             ))}
           </List>

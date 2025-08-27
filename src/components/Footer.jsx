@@ -8,7 +8,7 @@ export default function Footer() {
           <Grid container spacing={{ xs: 3, md: 4 }} alignItems="flex-start">
             {/* Brand row (full width) */}
             <Grid item xs={12}>
-              <Typography variant="h6" sx={{ fontWeight: 800, mb: 1 }}>Titpak Insurance</Typography>
+              <Typography variant="h6" sx={{ fontWeight: 800, mb: 1 }}>Titpak Insurance Brokers LTD</Typography>
               <Typography variant="body2" sx={{ opacity: 0.9, lineHeight: 1.6 }}>
                 Reliable coverage for life, motor, property and marine. We help you choose the right protection with clear advice and support.
               </Typography>
