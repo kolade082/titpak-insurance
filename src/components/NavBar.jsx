@@ -58,7 +58,7 @@ export default function NavBar() {
     { text: 'Home', link: '/titpak-insurance/' },
     { text: 'Who We Are', link: '/who-we-are' },
     { text: 'Claims', link: '/titpak-insurance/claims' },
-    { text: 'Contact', link: '/contact' },
+    { text: 'Contact', link: '/titpak-insurance/contact' },
     { text: 'FAQs', link: '/titpak-insurance/faqs' },
   ]
 
@@ -220,7 +220,7 @@ export default function NavBar() {
             <Button 
               color="inherit" 
               component={Link} 
-              to="/contact"
+              to="/titpak-insurance/contact"
               sx={{
                 px: 2,
                 py: 1,

@@ -12,8 +12,6 @@ import {
 } from "@mui/material";
 import { keyframes } from "@mui/system";
 import ClaimFormSection from "../components/ClaimFormSection";
-import SpeedIcon from '@mui/icons-material/Speed';
-import SupportAgentIcon from '@mui/icons-material/SupportAgent';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 
 // Fade-in animation
@@ -107,8 +105,7 @@ export default function Claims() {
             lineHeight: 1.6
           }}
         >
-          We understand that filing a claim can be stressful. Our experienced team is here to 
-          make the process as smooth and efficient as possible. Get started with your claim today.
+          Get started with your claim today.
         </Typography>
       </Box>
 

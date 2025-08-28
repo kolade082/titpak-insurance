@@ -18,10 +18,10 @@ export default function Footer() {
             <Grid item xs={12} md={6} sx={{ minWidth: 0 }}>
               <Typography variant="subtitle1" sx={{ fontWeight: 700, mb: 1 }}>Navigation</Typography>
               <Stack spacing={1}>
-                <MuiLink href="/" underline="hover" color="#cfe3ff">Home</MuiLink>
+                <MuiLink href="/titpak-insurance/" underline="hover" color="#cfe3ff">Home</MuiLink>
                 <MuiLink href="/who-we-are" underline="hover" color="#cfe3ff">Who we are</MuiLink>
-                <MuiLink href="/contact" underline="hover" color="#cfe3ff">Contact</MuiLink>
-                <MuiLink href="/faqs" underline="hover" color="#cfe3ff">FAQs</MuiLink>
+                <MuiLink href="/titpak-insurance/contact" underline="hover" color="#cfe3ff">Contact</MuiLink>
+                <MuiLink href="/titpak-insurance/faqs" underline="hover" color="#cfe3ff">FAQs</MuiLink>
               </Stack>
             </Grid>
             <Grid item xs={12} md={6} sx={{ minWidth: 0 }}>

@@ -116,9 +116,7 @@ const ClaimFormSection = () => {
               lineHeight: 1.6,
             }}
           >
-            Report your loss quickly and easily. Our experienced claims team
-            will guide you through every step of the process and ensure fair,
-            fast resolution.
+            Report your loss quickly and easily.
           </Typography>
         </Box>
 
@@ -126,7 +124,6 @@ const ClaimFormSection = () => {
         <Paper
           elevation={0}
           sx={{
-            borderRadius: 4,
             overflow: "hidden",
             background: "linear-gradient(135deg, #ffffff 0%, #f8fbff 100%)",
             border: "1px solid rgba(0, 51, 102, 0.08)",

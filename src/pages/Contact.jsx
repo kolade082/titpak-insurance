@@ -1,20 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Container,
   Box,
   Typography,
+  Button,
+  Stack,
+  Divider,
   Chip,
-  Paper,
   Grid,
   Card,
   CardContent,
   Avatar,
+  TextField,
+  Paper,
 } from "@mui/material";
 import { keyframes } from "@mui/system";
-import ClaimFormSection from "../components/ClaimFormSection";
-import SpeedIcon from '@mui/icons-material/Speed';
-import SupportAgentIcon from '@mui/icons-material/SupportAgent';
-import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import ContactMailIcon from "@mui/icons-material/ContactMail";
+import PhoneIcon from "@mui/icons-material/Phone";
+import LocationOnIcon from "@mui/icons-material/LocationOn";
+import AccessTimeIcon from "@mui/icons-material/AccessTime";
+import SendIcon from "@mui/icons-material/Send";
+import BusinessIcon from "@mui/icons-material/Business";
 
 // Fade-in animation
 const fadeIn = keyframes`
@@ -22,32 +28,39 @@ const fadeIn = keyframes`
   to { opacity: 1; transform: translateY(0); }
 `;
 
-export default function Claims() {
-  const claimsProcess = [
+export default function Contact() {
+  const [contactForm, setContactForm] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    subject: "",
+    message: "",
+  });
+
+  const handleContactFormChange = (field) => (event) => {
+    setContactForm((prev) => ({
+      ...prev,
+      [field]: event.target.value,
+    }));
+  };
+
+  const handleContactSubmit = (event) => {
+    event.preventDefault();
+    console.log("Contact form submitted:", contactForm);
+    alert("Thank you for your message! We'll get back to you within 24 hours.");
+  };
+
+
+
+  const officeLocations = [
     {
-      step: "1",
-      title: "Report Your Loss",
-      description: "Submit your claim through our online form or contact our claims team directly.",
-      icon: <CheckCircleIcon sx={{ fontSize: 32, color: '#4caf50' }} />
+      city: "Lagos",
+      address: "Nigeria Railway Compound, Off Moshood Abiola Rd, P.M.B. 1037, Ebute Metta",
+      phone: "+234 (0) 913-752-9774",
+      email: "titpakinsbrokersltd@gmail.com",
+      hours: "Mon–Fri, 9:00–17:00",
+      isMain: true,
     },
-    {
-      step: "2",
-      title: "Documentation Review",
-      description: "Our team reviews your claim and may request additional documentation if needed.",
-      icon: <CheckCircleIcon sx={{ fontSize: 32, color: '#2196f3' }} />
-    },
-    {
-      step: "3",
-      title: "Investigation",
-      description: "We conduct a thorough investigation to assess the extent of your loss.",
-      icon: <CheckCircleIcon sx={{ fontSize: 32, color: '#ff9800' }} />
-    },
-    {
-      step: "4",
-      title: "Assessment & Settlement",
-      description: "We evaluate your claim and process the settlement according to your policy terms.",
-      icon: <CheckCircleIcon sx={{ fontSize: 32, color: '#9c27b0' }} />
-    }
   ];
 
   return (
@@ -63,7 +76,7 @@ export default function Claims() {
         animation: `${fadeIn} 0.7s ease-in-out`
       }}>
         <Chip 
-          label="Claims" 
+          label="Get In Touch" 
           color="primary" 
           variant="outlined" 
           sx={{ 
@@ -85,7 +98,7 @@ export default function Claims() {
             fontSize: { xs: '2.5rem', md: '3.5rem' }
           }}
         >
-          File Your Claim
+          Contact Us
         </Typography>
         <Typography 
           variant="h5" 
@@ -95,7 +108,7 @@ export default function Claims() {
             fontWeight: 500
           }}
         >
-          Quick, fair, and transparent claims processing
+          We're here to help with all your insurance needs
         </Typography>
         <Typography 
           variant="body1" 
@@ -107,13 +120,14 @@ export default function Claims() {
             lineHeight: 1.6
           }}
         >
-          We understand that filing a claim can be stressful. Our experienced team is here to 
-          make the process as smooth and efficient as possible. Get started with your claim today.
+          Have questions about our services, need a quote, or want to file a claim? 
+          Reach out through any of the 
+          methods below or fill out our contact form.
         </Typography>
       </Box>
 
-      {/* Claims Process */}
-      <Box sx={{ mb: 8, width: '100%' }}>
+      {/* Office Locations */}
+      <Box sx={{ mb: 8 }}>
         <Box sx={{ textAlign: 'center', mb: 6 }}>
           <Typography 
             variant="h3" 
@@ -123,7 +137,7 @@ export default function Claims() {
               fontWeight: 800 
             }}
           >
-            How Claims Work
+            Our Office Location
           </Typography>
           <Typography 
             variant="body1" 
@@ -133,96 +147,137 @@ export default function Claims() {
               mx: 'auto'
             }}
           >
-            Simple 4-step process to get your claim processed quickly
+            Visit us at our conveniently located office
           </Typography>
         </Box>
         
-        <Grid 
-          container 
-          spacing={4} 
-          sx={{ 
-            width: '100%',
-            justifyContent: 'center',
-            alignItems: 'stretch'
-          }}
-        >
-          {claimsProcess.map((step, index) => (
-            <Grid 
-              item 
-              xs={12} 
-              sm={6} 
-              md={6}
-              lg={3} 
-              key={index}
-              sx={{ 
-                display: 'flex',
-                minHeight: { xs: 'auto', sm: '280px', md: '300px' }
-              }}
-            >
+        <Grid container spacing={4} sx={{ maxWidth: 1200, mx: 'auto' }}>
+          {officeLocations.map((office, index) => (
+            <Grid item xs={12} key={index}>
               <Card elevation={0} sx={{
-                width: '100%',
                 height: '100%',
-                borderRadius: 3,
-                border: '1px solid #e6eef8',
-                backgroundColor: '#ffffff',
-                transition: 'transform 0.25s ease, box-shadow 0.25s ease',
+                border: office.isMain ? '3px solid #003366' : '1px solid #e6eef8',
+                backgroundColor: office.isMain ? '#f8fbff' : '#ffffff',
+                transition: 'all 0.3s ease',
                 cursor: 'pointer',
-                display: 'flex',
-                flexDirection: 'column',
+                position: 'relative',
+                overflow: 'hidden',
                 '&:hover': { 
-                  transform: 'translateY(-6px)', 
-                  boxShadow: '0 16px 30px rgba(0,0,0,0.08)' 
+                  transform: 'translateY(-8px)', 
+                  boxShadow: '0 20px 40px rgba(0, 51, 102, 0.15)',
+                  borderColor: '#004a99'
+                },
+                '&::before': {
+                  content: '""',
+                  position: 'absolute',
+                  top: 0,
+                  left: 0,
+                  right: 0,
+                  height: '4px',
+                  background: 'linear-gradient(90deg, #003366, #004a99)',
+                  transform: 'scaleX(0)',
+                  transition: 'transform 0.3s ease',
+                },
+                '&:hover::before': {
+                  transform: 'scaleX(1)',
                 }
               }}>
-                <CardContent sx={{ 
-                  textAlign: 'center', 
-                  p: { xs: 3, md: 4 },
-                  display: 'flex',
-                  flexDirection: 'column',
-                  flexGrow: 1,
-                  justifyContent: 'space-between'
-                }}>
-                  <Box>
-                    <Box sx={{ 
-                      mb: { xs: 2, md: 3 },
-                      display: 'flex',
-                      justifyContent: 'center'
+                {office.isMain && (
+                  <Chip 
+                    label="Office" 
+                    color="primary" 
+                    size="small"
+                    sx={{ 
+                      position: 'absolute',
+                      top: 20,
+                      right: 20,
+                      backgroundColor: '#003366',
+                      color: 'white',
+                      fontWeight: 600,
+                      fontSize: '0.85rem',
+                      py: 0.5
+                    }} 
+                  />
+                )}
+                <CardContent sx={{ p: 5 }}>
+                  <Box sx={{ display: 'flex', alignItems: 'center', mb: 4 }}>
+                    <Avatar sx={{ 
+                      bgcolor: '#e8f1fb', 
+                      color: '#003366', 
+                      width: 60, 
+                      height: 60,
+                      mr: 3
                     }}>
-                      {step.icon}
-                    </Box>
+                      <LocationOnIcon sx={{ fontSize: 28 }} />
+                    </Avatar>
                     <Typography 
-                      variant="h3" 
+                      variant="h4" 
                       sx={{ 
                         color: '#003366', 
-                        fontWeight: 800,
-                        mb: { xs: 1.5, md: 2 },
-                        fontSize: { xs: '2.5rem', md: '3rem' }
+                        fontWeight: 800
                       }}
                     >
-                      {step.step}
-                    </Typography>
-                    <Typography 
-                      variant="h6" 
-                      sx={{ 
-                        color: '#003366', 
-                        fontWeight: 700,
-                        mb: { xs: 1.5, md: 2 },
-                        fontSize: { xs: '1.1rem', md: '1.2rem' }
-                      }}
-                    >
-                      {step.title}
-                    </Typography>
-                    <Typography 
-                      variant="body1" 
-                      sx={{ 
-                        color: 'rgba(0,0,0,0.7)',
-                        lineHeight: 1.6,
-                        fontSize: { xs: '0.9rem', md: '1rem' }
-                      }}
-                    >
-                      {step.description}
+                      {office.city}
                     </Typography>
                   </Box>
+                  
+                  <Grid container spacing={3} sx={{ mb: 4 }}>
+                    <Grid item xs={12} md={6}>
+                      <Box sx={{ display: 'flex', alignItems: 'flex-start', mb: 3 }}>
+                        <LocationOnIcon sx={{ color: '#003366', mr: 2, mt: 0.5, fontSize: 22 }} />
+                        <Box>
+                          <Typography variant="body2" sx={{ color: '#666', mb: 0.5, fontWeight: 600 }}>
+                            Address
+                          </Typography>
+                          <Typography variant="body1" sx={{ color: 'rgba(0,0,0,0.8)', lineHeight: 1.5 }}>
+                            {office.address}
+                          </Typography>
+                        </Box>
+                      </Box>
+                    </Grid>
+                    
+                    <Grid item xs={12} md={6}>
+                      <Box sx={{ display: 'flex', alignItems: 'center', mb: 3 }}>
+                        <PhoneIcon sx={{ color: '#003366', mr: 2, fontSize: 22 }} />
+                        <Box>
+                          <Typography variant="body2" sx={{ color: '#666', mb: 0.5, fontWeight: 600 }}>
+                            Phone
+                          </Typography>
+                          <Typography variant="body1" sx={{ color: 'rgba(0,0,0,0.8)' }}>
+                            {office.phone}
+                          </Typography>
+                        </Box>
+                      </Box>
+                    </Grid>
+                    
+                    <Grid item xs={12} md={6}>
+                      <Box sx={{ display: 'flex', alignItems: 'center', mb: 3 }}>
+                        <ContactMailIcon sx={{ color: '#003366', mr: 2, fontSize: 22 }} />
+                        <Box>
+                          <Typography variant="body2" sx={{ color: '#666', mb: 0.5, fontWeight: 600 }}>
+                            Email
+                          </Typography>
+                          <Typography variant="body1" sx={{ color: 'rgba(0,0,0,0.8)' }}>
+                            {office.email}
+                          </Typography>
+                        </Box>
+                      </Box>
+                    </Grid>
+                    
+                    <Grid item xs={12} md={6}>
+                      <Box sx={{ display: 'flex', alignItems: 'center', mb: 3 }}>
+                        <AccessTimeIcon sx={{ color: '#003366', mr: 2, fontSize: 22 }} />
+                        <Box>
+                          <Typography variant="body2" sx={{ color: '#666', mb: 0.5, fontWeight: 600 }}>
+                            Hours
+                          </Typography>
+                          <Typography variant="body1" sx={{ color: 'rgba(0,0,0,0.8)' }}>
+                            {office.hours}
+                          </Typography>
+                        </Box>
+                      </Box>
+                    </Grid>
+                  </Grid>
                 </CardContent>
               </Card>
             </Grid>
@@ -230,10 +285,278 @@ export default function Claims() {
         </Grid>
       </Box>
 
+      {/* Contact Form */}
+      <Box sx={{ mb: 8 }}>
+        <Box sx={{ textAlign: 'center', mb: 6 }}>
+          <Typography 
+            variant="h3" 
+            sx={{ 
+              color: '#003366', 
+              mb: 2, 
+              fontWeight: 800 
+            }}
+          >
+            Send Us a Message
+          </Typography>
+          <Typography 
+            variant="body1" 
+            sx={{ 
+              color: 'rgba(0,0,0,0.7)', 
+              maxWidth: 600,
+              mx: 'auto'
+            }}
+          >
+            Fill out the form below and we'll get back to you within 24 hours
+          </Typography>
+        </Box>
+        
+        <Paper elevation={0} sx={{ 
+          width: '100%',
+          maxWidth: 1200,
+          mx: 'auto',
+          overflow: 'hidden',
+          background: 'linear-gradient(135deg, #ffffff 0%, #f8fbff 100%)',
+          border: '1px solid rgba(0, 51, 102, 0.08)',
+          boxShadow: '0 20px 60px rgba(0, 51, 102, 0.08)'
+        }}>
+          {/* Form Header */}
+          <Box sx={{
+            background: 'linear-gradient(135deg, #003366 0%, #004a99 100%)',
+            color: 'white',
+            p: { xs: 4, md: 5 },
+            textAlign: 'center',
+            position: 'relative',
+            overflow: 'hidden'
+          }}>
+            <Box sx={{
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              background: 'radial-gradient(circle at 30% 50%, rgba(255,255,255,0.1) 0%, transparent 50%)',
+            }} />
+            <Typography variant="h4" sx={{ fontWeight: 700, mb: 2, position: 'relative' }}>
+              Contact Form
+            </Typography>
+            <Typography variant="body1" sx={{ opacity: 0.9, fontSize: '1rem', position: 'relative' }}>
+              We'd love to hear from you
+            </Typography>
+          </Box>
 
-      {/* Claims Form */}
-      <ClaimFormSection />
+          {/* Form Content */}
+          <Box sx={{ p: { xs: 4, md: 6 } }}>
+            <form onSubmit={handleContactSubmit} style={{ width: '100%' }}>
+              <Grid container spacing={4} sx={{ width: '100%' }}>
+                <Grid item xs={12} sx={{ width: '100%' }}>
+                  <TextField
+                    fullWidth
+                    label="Full Name"
+                    value={contactForm.name}
+                    onChange={handleContactFormChange('name')}
+                    required
+                    variant="outlined"
+                    placeholder="Enter your full name"
+                    sx={{
+                      width: '100%',
+                      '& .MuiOutlinedInput-root': {
+                        backgroundColor: 'rgba(255, 255, 255, 0.8)',
+                        transition: 'all 0.3s ease',
+                        height: '56px',
+                        width: '100%',
+                        '&:hover': {
+                          backgroundColor: 'rgba(255, 255, 255, 1)',
+                          transform: 'translateY(-1px)',
+                          boxShadow: '0 4px 12px rgba(0, 51, 102, 0.1)'
+                        },
+                        '&.Mui-focused': {
+                          backgroundColor: 'rgba(255, 255, 255, 1)',
+                          transform: 'translateY(-1px)',
+                          boxShadow: '0 4px 12px rgba(0, 51, 102, 0.15)'
+                        }
+                      },
+                      '& .MuiInputLabel-root': {
+                        fontWeight: 500
+                      }
+                    }}
+                  />
+                </Grid>
+                
+                <Grid item xs={12} sx={{ width: '100%' }}>
+                  <TextField
+                    fullWidth
+                    label="Email Address"
+                    type="email"
+                    value={contactForm.email}
+                    onChange={handleContactFormChange('email')}
+                    required
+                    variant="outlined"
+                    placeholder="your.email@example.com"
+                    sx={{
+                      width: '100%',
+                      '& .MuiOutlinedInput-root': {
+                        backgroundColor: 'rgba(255, 255, 255, 0.8)',
+                        transition: 'all 0.3s ease',
+                        height: '56px',
+                        width: '100%',
+                        '&:hover': {
+                          backgroundColor: 'rgba(255, 255, 255, 1)',
+                          transform: 'translateY(-1px)',
+                          boxShadow: '0 4px 12px rgba(0, 51, 102, 0.1)'
+                        },
+                        '&.Mui-focused': {
+                          backgroundColor: 'rgba(255, 255, 255, 1)',
+                          transform: 'translateY(-1px)',
+                          boxShadow: '0 4px 12px rgba(0, 51, 102, 0.15)'
+                        }
+                      },
+                      '& .MuiInputLabel-root': {
+                        fontWeight: 500
+                      }
+                    }}
+                  />
+                </Grid>
 
+                <Grid item xs={12} sx={{ width: '100%' }}>
+                  <TextField
+                    fullWidth
+                    label="Phone Number"
+                    type="tel"
+                    value={contactForm.phone}
+                    onChange={handleContactFormChange('phone')}
+                    variant="outlined"
+                    placeholder="+234 xxx xxx xxxx"
+                    sx={{
+                      width: '100%',
+                      '& .MuiOutlinedInput-root': {
+                        backgroundColor: 'rgba(255, 255, 255, 0.8)',
+                        transition: 'all 0.3s ease',
+                        height: '56px',
+                        width: '100%',
+                        '&:hover': {
+                          backgroundColor: 'rgba(255, 255, 255, 1)',
+                          transform: 'translateY(-1px)',
+                          boxShadow: '0 4px 12px rgba(0, 51, 102, 0.1)'
+                        },
+                        '&.Mui-focused': {
+                          backgroundColor: 'rgba(255, 255, 255, 1)',
+                          transform: 'translateY(-1px)',
+                          boxShadow: '0 4px 12px rgba(0, 51, 102, 0.15)'
+                        }
+                      },
+                      '& .MuiInputLabel-root': {
+                        fontWeight: 500
+                      }
+                    }}
+                  />
+                </Grid>
+
+                <Grid item xs={12} sx={{ width: '100%' }}>
+                  <TextField
+                    fullWidth
+                    label="Subject"
+                    value={contactForm.subject}
+                    onChange={handleContactFormChange('subject')}
+                    required
+                    variant="outlined"
+                    placeholder="What is this about?"
+                    sx={{
+                      width: '100%',
+                      '& .MuiOutlinedInput-root': {
+                        backgroundColor: 'rgba(255, 255, 255, 0.8)',
+                        transition: 'all 0.3s ease',
+                        height: '56px',
+                        width: '100%',
+                        '&:hover': {
+                          backgroundColor: 'rgba(255, 255, 255, 1)',
+                          transform: 'translateY(-1px)',
+                          boxShadow: '0 4px 12px rgba(0, 51, 102, 0.1)'
+                        },
+                        '&.Mui-focused': {
+                          backgroundColor: 'rgba(255, 255, 255, 1)',
+                          transform: 'translateY(-1px)',
+                          boxShadow: '0 4px 12px rgba(0, 51, 102, 0.15)'
+                        }
+                      },
+                      '& .MuiInputLabel-root': {
+                        fontWeight: 500
+                      }
+                    }}
+                  />
+                </Grid>
+
+                <Grid item xs={12} sx={{ width: '100%' }}>
+                  <TextField
+                    fullWidth
+                    label="Message"
+                    value={contactForm.message}
+                    onChange={handleContactFormChange('message')}
+                    required
+                    multiline
+                    rows={6}
+                    variant="outlined"
+                    placeholder="Tell us how we can help you..."
+                    sx={{
+                      width: '100%',
+                      '& .MuiOutlinedInput-root': {
+                        backgroundColor: 'rgba(255, 255, 255, 0.8)',
+                        transition: 'all 0.3s ease',
+                        minHeight: '120px',
+                        width: '100%',
+                        '&:hover': {
+                          backgroundColor: 'rgba(255, 255, 255, 1)',
+                          transform: 'translateY(-1px)',
+                          boxShadow: '0 4px 12px rgba(0, 51, 102, 0.1)'
+                        },
+                        '&.Mui-focused': {
+                          backgroundColor: 'rgba(255, 255, 255, 1)',
+                          transform: 'translateY(-1px)',
+                          boxShadow: '0 4px 12px rgba(0, 51, 102, 0.15)'
+                        }
+                      },
+                      '& .MuiInputLabel-root': {
+                        fontWeight: 500
+                      }
+                    }}
+                  />
+                </Grid>
+
+                <Grid item xs={12} sx={{ width: '100%' }}>
+                  <Box sx={{ display: 'flex', justifyContent: 'center', mt: 4, width: '100%' }}>
+                    <Button
+                      type="submit"
+                      variant="contained"
+                      size="large"
+                      startIcon={<SendIcon />}
+                      sx={{
+                        background: 'linear-gradient(135deg, #003366 0%, #004a99 100%)',
+                        color: '#fff',
+                        px: { xs: 6, md: 12, lg: 16 },
+                        py: 2.5,
+                        borderRadius: 4,
+                        textTransform: 'none',
+                        fontSize: { xs: '1.1rem', md: '1.3rem', lg: '1.4rem' },
+                        fontWeight: 700,
+                        minWidth: { xs: '200px', md: '300px', lg: '400px' },
+                        height: { xs: '48px', md: '56px', lg: '64px' },
+                        boxShadow: '0 8px 24px rgba(0, 51, 102, 0.3)',
+                        '&:hover': {
+                          background: 'linear-gradient(135deg, #004a99 0%, #0066cc 100%)',
+                          transform: 'translateY(-3px)',
+                          boxShadow: '0 12px 32px rgba(0, 51, 102, 0.4)'
+                        },
+                        transition: 'all 0.3s ease'
+                      }}
+                    >
+                      Send Message
+                    </Button>
+                  </Box>
+                </Grid>
+              </Grid>
+            </form>
+          </Box>
+        </Paper>
+      </Box>
     </Container>
   );
 }
