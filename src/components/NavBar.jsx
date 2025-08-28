@@ -57,9 +57,9 @@ export default function NavBar() {
   const menuItems = [
     { text: 'Home', link: '/titpak-insurance/' },
     { text: 'Who We Are', link: '/who-we-are' },
-    { text: 'Claims', link: '/claims' },
+    { text: 'Claims', link: '/titpak-insurance/claims' },
     { text: 'Contact', link: '/contact' },
-    { text: 'FAQs', link: '/faqs' },
+    { text: 'FAQs', link: '/titpak-insurance/faqs' },
   ]
 
   return (
@@ -200,7 +200,7 @@ export default function NavBar() {
             <Button 
               color="inherit" 
               component={Link} 
-              to="/claims"
+              to="/titpak-insurance/claims"
               sx={{
                 px: 2,
                 py: 1,
@@ -240,7 +240,7 @@ export default function NavBar() {
             <Button 
               color="inherit" 
               component={Link} 
-              to="/faqs"
+              to="/titpak-insurance/faqs"
               sx={{
                 px: 2,
                 py: 1,

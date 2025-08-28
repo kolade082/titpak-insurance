@@ -18,6 +18,7 @@ import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import ShieldIcon from "@mui/icons-material/Shield";
 import SpeedIcon from "@mui/icons-material/Speed";
 import SupportAgentIcon from "@mui/icons-material/SupportAgent";
+import { Link } from "react-router-dom";
 
 import ClaimFormSection from "../components/ClaimFormSection";
 import FAQSection from "../components/FAQSection";
