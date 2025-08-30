@@ -6,6 +6,8 @@ import Home from './pages/Home'
 import FAQ from './pages/FAQ'
 import Claims from './pages/Claims'
 import Contact from './pages/Contact'
+import AboutUs from './pages/AboutUs'
+import Leadership from './pages/Leadership'
 
 function App() {
   return (
@@ -16,6 +18,8 @@ function App() {
         <Route path="/titpak-insurance/claims" element={<Claims />} />
         <Route path="/titpak-insurance/contact" element={<Contact />} />
         <Route path="/titpak-insurance/faqs" element={<FAQ />} />
+        <Route path="/who-we-are/about-us" element={<AboutUs />} />
+        <Route path="/who-we-are/leadership" element={<Leadership />} />
       </Routes>
       <Footer />
     </div>

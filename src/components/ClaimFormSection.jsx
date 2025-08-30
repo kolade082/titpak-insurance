@@ -62,7 +62,7 @@ const ClaimFormSection = () => {
           mx: "auto",
           mb: 12,
           px: { xs: 2, md: 3 },
-          maxWidth: 1200,
+          // maxWidth: 1200,
         }}
       >
         {/* Section Header */}

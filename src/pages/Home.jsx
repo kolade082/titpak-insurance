@@ -305,45 +305,6 @@ export default function Home() {
 
       {/* Claims Form Section */}
       <ClaimFormSection />
-
-      {/* Contact / CTA Section */}
-      <Box
-        sx={{
-          textAlign: "center",
-          py: { xs: 2, md: 4 },
-          px: { xs: 1, md: 2 },
-          borderRadius: 4,
-          background: "linear-gradient(135deg, #0b58b9 0%, #003366 100%)",
-          color: "#fff",
-          animation: `${fadeIn} 1.1s ease-in-out`,
-          maxWidth: 1200,
-          mx: "auto",
-        }}
-      >
-        <Typography variant="h5" sx={{ mb: 1.5, fontWeight: 800 }}>
-          Ready to protect what matters?
-        </Typography>
-        <Typography variant="body2" sx={{ mb: 3, opacity: 0.9 }}>
-          Get a personalized quote in minutes. No obligation.
-        </Typography>
-        <Button
-          variant="contained"
-          startIcon={<ContactMailIcon />}
-          sx={{
-            backgroundColor: "#ffffff",
-            color: "#003366",
-            px: 4,
-            py: 1.2,
-            fontSize: "0.95rem",
-            borderRadius: 2,
-            textTransform: "none",
-            transition: "all 0.25s ease",
-            "&:hover": { backgroundColor: "#f1f6ff" },
-          }}
-        >
-          Contact Us
-        </Button>
-      </Box>
     </Container>
   );
 }
