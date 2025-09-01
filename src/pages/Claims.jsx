@@ -31,7 +31,7 @@ export default function Claims() {
     {
       step: "2",
       title: "Documentation Review",
-      description: "Our team reviews your claim and may request additional documentation if needed.",
+      description: "Our team reviews your claim and will request additional documentation if needed.",
       icon: <CheckCircleIcon sx={{ fontSize: 32, color: '#2196f3' }} />
     },
     {
@@ -227,6 +227,168 @@ export default function Claims() {
         </Grid>
       </Box>
 
+
+      {/* Documents Required */}
+      <Box sx={{ mb: 8, width: '100%' }}>
+        <Box sx={{ textAlign: 'center', mb: 6 }}>
+          <Typography 
+            variant="h3" 
+            sx={{ 
+              color: '#003366', 
+              mb: 2, 
+              fontWeight: 800 
+            }}
+          >
+            Documents Required
+          </Typography>
+          <Typography 
+            variant="body1" 
+            sx={{ 
+              color: 'rgba(0,0,0,0.7)', 
+              maxWidth: 600,
+              mx: 'auto'
+            }}
+          >
+            Prepare these documents to speed up your claims process
+          </Typography>
+        </Box>
+        
+        <Grid 
+          container 
+          spacing={4} 
+          sx={{ 
+            width: '100%',
+            justifyContent: 'center',
+            alignItems: 'stretch'
+          }}
+        >
+          {[
+            {
+              title: "Proof of Loss",
+              description: "Photos, videos, or detailed descriptions of the damage or loss incurred",
+              icon: "📸",
+              category: "Essential"
+            },
+            {
+              title: "Policy Documents",
+              description: "Your insurance policy number and relevant policy documents",
+              icon: "📋",
+              category: "Essential"
+            },
+            {
+              title: "Police Report",
+              description: "Official police report for theft, vandalism, or accident claims",
+              icon: "🚔",
+              category: "If Applicable"
+            },
+            {
+              title: "Medical Reports",
+              description: "Medical certificates and bills for health-related claims",
+              icon: "🏥",
+              category: "If Applicable"
+            },
+            {
+              title: "Repair Estimates",
+              description: "Quotes from repair shops or contractors for property damage",
+              icon: "🔧",
+              category: "If Applicable"
+            },
+            {
+              title: "Receipts & Invoices",
+              description: "Original receipts for items being claimed or repair costs",
+              icon: "🧾",
+              category: "If Applicable"
+            }
+          ].map((doc, index) => (
+            <Grid 
+              item 
+              xs={12} 
+              sm={6} 
+              md={4}
+              key={index}
+              sx={{ 
+                display: 'flex',
+                minHeight: { xs: 'auto', sm: '200px', md: '220px' }
+              }}
+            >
+              <Card elevation={0} sx={{
+                width: '100%',
+                height: '100%',
+                borderRadius: 3,
+                border: '1px solid #e6eef8',
+                backgroundColor: '#ffffff',
+                transition: 'transform 0.25s ease, box-shadow 0.25s ease',
+                cursor: 'pointer',
+                display: 'flex',
+                flexDirection: 'column',
+                '&:hover': { 
+                  transform: 'translateY(-4px)', 
+                  boxShadow: '0 12px 24px rgba(0,0,0,0.08)' 
+                }
+              }}>
+                <CardContent sx={{ 
+                  textAlign: 'center', 
+                  p: { xs: 3, md: 4 },
+                  display: 'flex',
+                  flexDirection: 'column',
+                  flexGrow: 1,
+                  justifyContent: 'space-between'
+                }}>
+                  <Box>
+                    <Box sx={{ 
+                      mb: { xs: 2, md: 3 },
+                      display: 'flex',
+                      justifyContent: 'center'
+                    }}>
+                      <Typography 
+                        variant="h2" 
+                        sx={{ 
+                          fontSize: { xs: '2.5rem', md: '3rem' },
+                          lineHeight: 1
+                        }}
+                      >
+                        {doc.icon}
+                      </Typography>
+                    </Box>
+                    <Typography 
+                      variant="h6" 
+                      sx={{ 
+                        color: '#003366', 
+                        fontWeight: 700,
+                        mb: { xs: 1, md: 1.5 },
+                        fontSize: { xs: '1.1rem', md: '1.2rem' }
+                      }}
+                    >
+                      {doc.title}
+                    </Typography>
+                    <Typography 
+                      variant="body2" 
+                      sx={{ 
+                        color: 'rgba(0,0,0,0.7)',
+                        lineHeight: 1.6,
+                        fontSize: { xs: '0.9rem', md: '1rem' },
+                        mb: 2
+                      }}
+                    >
+                      {doc.description}
+                    </Typography>
+                    <Chip 
+                      label={doc.category} 
+                      size="small"
+                      sx={{ 
+                        backgroundColor: doc.category === 'Essential' ? '#e3f2fd' : '#fff3e0',
+                        color: doc.category === 'Essential' ? '#1976d2' : '#f57c00',
+                        fontWeight: 600,
+                        fontSize: '0.8rem'
+                      }} 
+                    />
+                  </Box>
+                </CardContent>
+              </Card>
+            </Grid>
+          ))}
+        </Grid>
+      </Box>
 
       {/* Claims Form */}
       <ClaimFormSection />

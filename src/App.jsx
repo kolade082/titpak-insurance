@@ -8,6 +8,7 @@ import Claims from './pages/Claims'
 import Contact from './pages/Contact'
 import AboutUs from './pages/AboutUs'
 import Leadership from './pages/Leadership'
+import GetQuote from './pages/GetQuote'
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="/titpak-insurance/faqs" element={<FAQ />} />
         <Route path="/who-we-are/about-us" element={<AboutUs />} />
         <Route path="/who-we-are/leadership" element={<Leadership />} />
+        <Route path="/titpak-insurance/get-quote" element={<GetQuote />} />
       </Routes>
       <Footer />
     </div>

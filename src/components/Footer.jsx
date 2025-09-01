@@ -54,7 +54,7 @@ export default function Footer() {
             }}
           >
             <MuiLink
-              href="/titpak-insurance/contact"
+              href="/titpak-insurance/get-quote"
               underline="none"
               sx={{ textDecoration: "none" }}
             >
@@ -142,6 +142,13 @@ export default function Footer() {
                   color="#cfe3ff"
                 >
                   Claims
+                </MuiLink>
+                <MuiLink
+                  href="/titpak-insurance/get-quote"
+                  underline="hover"
+                  color="#cfe3ff"
+                >
+                  Get Quote
                 </MuiLink>
                 <MuiLink
                   href="/titpak-insurance/contact"

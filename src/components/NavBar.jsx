@@ -310,6 +310,26 @@ export default function NavBar() {
             <Button
               color="inherit"
               component={Link}
+              to="/titpak-insurance/get-quote"
+              sx={{
+                px: 2,
+                py: 1,
+                borderRadius: 2,
+                textTransform: "none",
+                fontWeight: 500,
+                fontSize: "1rem",
+                "&:hover": {
+                  backgroundColor: "rgba(255, 255, 255, 0.1)",
+                  transform: "translateY(-1px)",
+                },
+                transition: "all 0.2s ease",
+              }}
+            >
+              Get Quote
+            </Button>
+            <Button
+              color="inherit"
+              component={Link}
               to="/titpak-insurance/contact"
               sx={{
                 px: 2,
@@ -552,6 +572,28 @@ export default function NavBar() {
             >
               <ListItemText
                 primary="Claims"
+                sx={{
+                  color: "#003366",
+                  fontWeight: 500,
+                  "& .MuiTypography-root": { fontSize: "1rem" },
+                }}
+              />
+            </ListItem>
+
+            {/* Get Quote */}
+            <ListItem
+              button
+              component={Link}
+              to="/titpak-insurance/get-quote"
+              onClick={() => setDrawerOpen(false)}
+              sx={{
+                borderRadius: 2,
+                mb: 0.5,
+                "&:hover": { backgroundColor: "rgba(0, 51, 102, 0.04)" },
+              }}
+            >
+              <ListItemText
+                primary="Get Quote"
                 sx={{
                   color: "#003366",
                   fontWeight: 500,

@@ -47,11 +47,13 @@ const ClaimFormSection = () => {
 
   const natureOfLossOptions = [
     "Fire",
-    "Theft",
-    "Accident",
-    "Natural Disaster",
-    "Water Damage",
-    "Vandalism",
+    "Burglary",
+    "Household",
+    "Goods-In-Transit",
+    "Fidelity Guarantee",
+    "Group Personal Accident",
+    "Plant All Risks/Machinery Breakdown",
+    "Boiler & Pressure Vessel",
     "Other",
   ];
 
@@ -152,7 +154,7 @@ const ClaimFormSection = () => {
           </Box>
 
           {/* Form Content */}
-          <Box sx={{ p: { xs: 3, md: 5 } }}>
+          <Box sx={{ p: { xs: 4, md: 6 } }}>
             <form onSubmit={handleClaimsSubmit}>
               {/* Personal Information */}
               <Box sx={{ mb: 5 }}>
@@ -177,8 +179,8 @@ const ClaimFormSection = () => {
                   />
                   Policy & Contact Information
                 </Typography>
-                <Grid container spacing={3}>
-                  <Grid item xs={12} md={6}>
+                <Grid container spacing={4} sx={{ width: "100%" }}>
+                  <Grid item xs={12} sx={{ width: "100%" }}>
                     <TextField
                       fullWidth
                       label="Policy Number"
@@ -190,7 +192,7 @@ const ClaimFormSection = () => {
                       sx={{ minWidth: { xs: 250, md: 500 } }}
                     />
                   </Grid>
-                  <Grid item xs={12} md={6}>
+                  <Grid item xs={12} sx={{ width: "100%" }}>
                     <DatePicker
                       label="Date of Loss"
                       value={claimsForm.dateOfLoss}
@@ -206,7 +208,7 @@ const ClaimFormSection = () => {
                       }}
                     />
                   </Grid>
-                  <Grid item xs={12} md={6}>
+                  <Grid item xs={12} sx={{ width: "100%" }}>
                     <TextField
                       fullWidth
                       label="Email Address"
@@ -219,7 +221,7 @@ const ClaimFormSection = () => {
                       sx={{ minWidth: { xs: 250, md: 500 } }}
                     />
                   </Grid>
-                  <Grid item xs={12} md={6}>
+                  <Grid item xs={12} sx={{ width: "100%" }}>
                     <TextField
                       fullWidth
                       label="Phone Number"
@@ -258,8 +260,8 @@ const ClaimFormSection = () => {
                   />
                   Loss Details
                 </Typography>
-                <Grid container spacing={3}>
-                  <Grid item xs={12} md={6}>
+                <Grid container spacing={4} sx={{ width: "100%" }}>
+                  <Grid item xs={12} sx={{ width: "100%" }}>
                     <TextField
                       fullWidth
                       label="Location of Loss"
@@ -271,7 +273,7 @@ const ClaimFormSection = () => {
                       sx={{ minWidth: { xs: 250, md: 500 } }}
                     />
                   </Grid>
-                  <Grid item xs={12} md={6}>
+                  <Grid item xs={12} sx={{ width: "100%" }}>
                     <TextField
                       fullWidth
                       select
@@ -289,7 +291,7 @@ const ClaimFormSection = () => {
                       ))}
                     </TextField>
                   </Grid>
-                  <Grid item xs={12}>
+                  <Grid item xs={12} sx={{ width: "100%" }}>
                     <TextField
                       fullWidth
                       label="Narration of Event"

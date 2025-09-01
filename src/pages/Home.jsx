@@ -116,6 +116,8 @@ export default function Home() {
           </Typography>
           <Stack direction={{ xs: "column", sm: "row" }} spacing={2}>
             <Button
+              component={Link}
+              to="/titpak-insurance/get-quote"
               variant="contained"
               sx={{
                 backgroundColor: "#003366",
