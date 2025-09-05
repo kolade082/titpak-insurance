@@ -69,8 +69,9 @@ export default function GetQuote() {
   const handleDownload = (fileName) => {
     // Create a link element to trigger download
     const link = document.createElement('a');
-    link.href = `/assets/get_quote/${fileName}`;
+    link.href = `./assets/get_quote/${fileName}`;
     link.download = fileName;
+    link.target = '_blank';
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);

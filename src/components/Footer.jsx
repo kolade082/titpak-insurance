@@ -174,22 +174,22 @@ export default function Footer() {
                 Who We Are
               </Typography>
               <Stack spacing={1}>
-                <MuiLink
-                  href="/who-we-are/about-us"
-                  underline="hover"
-                  color="#cfe3ff"
-                  sx={{ fontSize: "0.9rem" }}
-                >
-                  About Us
-                </MuiLink>
-                <MuiLink
-                  href="/who-we-are/leadership"
-                  underline="hover"
-                  color="#cfe3ff"
-                  sx={{ fontSize: "0.9rem" }}
-                >
-                  Leadership
-                </MuiLink>
+                                  <MuiLink
+                    href="/titpak-insurance/about-us"
+                    underline="hover"
+                    color="#cfe3ff"
+                    sx={{ fontSize: "0.9rem" }}
+                  >
+                    About Us
+                  </MuiLink>
+                  <MuiLink
+                    href="/titpak-insurance/leadership"
+                    underline="hover"
+                    color="#cfe3ff"
+                    sx={{ fontSize: "0.9rem" }}
+                  >
+                    Leadership
+                  </MuiLink>
               </Stack>
             </Grid>
             <Grid item xs={12} md={6} sx={{ minWidth: 0 }}>

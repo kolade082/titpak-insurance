@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Container,
   Box,
@@ -9,10 +9,20 @@ import {
   Card,
   CardContent,
   Avatar,
+  Button,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogActions,
+  List,
+  ListItem,
+  ListItemText,
+  IconButton,
 } from "@mui/material";
 import { keyframes } from "@mui/system";
 import ClaimFormSection from "../components/ClaimFormSection";
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import CloseIcon from '@mui/icons-material/Close';
 
 // Fade-in animation
 const fadeIn = keyframes`
@@ -21,6 +31,19 @@ const fadeIn = keyframes`
 `;
 
 export default function Claims() {
+  const [selectedInsurance, setSelectedInsurance] = useState(null);
+  const [modalOpen, setModalOpen] = useState(false);
+
+  const handleViewAllRequirements = (insurance) => {
+    setSelectedInsurance(insurance);
+    setModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setModalOpen(false);
+    setSelectedInsurance(null);
+  };
+
   const claimsProcess = [
     {
       step: "1",
@@ -239,7 +262,7 @@ export default function Claims() {
               fontWeight: 800 
             }}
           >
-            Documents Required
+            Documents Required by Insurance Type
           </Typography>
           <Typography 
             variant="body1" 
@@ -249,7 +272,7 @@ export default function Claims() {
               mx: 'auto'
             }}
           >
-            Prepare these documents to speed up your claims process
+            Click on your insurance type to see the specific documents required for your claim
           </Typography>
         </Box>
         
@@ -264,51 +287,142 @@ export default function Claims() {
         >
           {[
             {
-              title: "Proof of Loss",
-              description: "Photos, videos, or detailed descriptions of the damage or loss incurred",
-              icon: "📸",
-              category: "Essential"
+              title: "Fire Insurance",
+              description: "Property damage from fire and special perils",
+              icon: "🔥",
+              requirements: [
+                "Completed claim form",
+                "Photographs taken at the scene",
+                "Fire brigade report",
+                "Police report",
+                "Estimate",
+                "Internal Statement by eyewitness / Incident report",
+                "Valuation report of the building",
+                "Damage to itemized parts/equipment",
+                "And any other relevant claim documents"
+              ]
             },
             {
-              title: "Policy Documents",
-              description: "Your insurance policy number and relevant policy documents",
-              icon: "📋",
-              category: "Essential"
+              title: "Burglary Insurance",
+              description: "Theft and break-in protection",
+              icon: "🔒",
+              requirements: [
+                "Completed claim form",
+                "Estimate of repairs",
+                "Photographs: to show the extent of the incident",
+                "Police report",
+                "List of damage items",
+                "Statement of loss or incident report",
+                "And any other supporting claim document"
+              ]
             },
             {
-              title: "Police Report",
-              description: "Official police report for theft, vandalism, or accident claims",
-              icon: "🚔",
-              category: "If Applicable"
-            },
-            {
-              title: "Medical Reports",
-              description: "Medical certificates and bills for health-related claims",
+              title: "Group Personal Accident",
+              description: "Workplace injury coverage",
               icon: "🏥",
-              category: "If Applicable"
+              requirements: [
+                "Completed claim form",
+                "Photographs of the injured staff",
+                "Medical report",
+                "Itemised medical bill",
+                "Evidence of the itemized medical bill",
+                "ID Card",
+                "Excuse the duty certificate showing the days of the incapacity period",
+                "Three months' pay slips",
+                "Incident report",
+                "And any other supporting claim documents"
+              ]
             },
             {
-              title: "Repair Estimates",
-              description: "Quotes from repair shops or contractors for property damage",
+              title: "Householder Comprehensive",
+              description: "Complete home protection",
+              icon: "🏠",
+              requirements: [
+                "Completed claim form",
+                "Estimate of repairs",
+                "Photographs: to show the extent of the incident",
+                "Police report",
+                "List of damage items",
+                "Statement of loss or incident report",
+                "And any other supporting claim documents"
+              ]
+            },
+            {
+              title: "Goods in Transit",
+              description: "Protection during transportation",
+              icon: "📦",
+              requirements: [
+                "Completed claim form",
+                "Invoice",
+                "Delivery waybill",
+                "Debit Note",
+                "Particulars of the vehicle (e.g. vehicle license, proof of ownership, Roadworthiness and others)",
+                "Agreement between the insured and the hire vehicle company (if it is any hire vehicle)",
+                "Photographs",
+                "Police report",
+                "List of damage items",
+                "Statement of loss or incident report",
+                "And any other supporting claim documents"
+              ]
+            },
+            {
+              title: "Fidelity Guarantee",
+              description: "Employee dishonesty protection",
+              icon: "🛡️",
+              requirements: [
+                "Completed claim form",
+                "Statement of loss / Incident report",
+                "List of damage items",
+                "Guarantor form",
+                "Employment letter",
+                "Confirmation of appointment",
+                "Querry letter",
+                "Reply letter to the query",
+                "Defaulter's Benefit",
+                "Persecution letter",
+                "Police report",
+                "And any other supporting claim documents"
+              ]
+            },
+            {
+              title: "Plant All Risk / Machinery Breakdown",
+              description: "Equipment and machinery protection",
+              icon: "⚙️",
+              requirements: [
+                "Completed claim form",
+                "Estimate of repairs",
+                "Incident report",
+                "Photographs (if any)",
+                "List of damage items",
+                "Statement of loss or incident report",
+                "And any other supporting claim documents"
+              ]
+            },
+            {
+              title: "Boiler & Pressure Vessel",
+              description: "Industrial equipment protection",
               icon: "🔧",
-              category: "If Applicable"
-            },
-            {
-              title: "Receipts & Invoices",
-              description: "Original receipts for items being claimed or repair costs",
-              icon: "🧾",
-              category: "If Applicable"
+              requirements: [
+                "Completed claim form",
+                "Estimate of repairs",
+                "Incident report",
+                "Photographs",
+                "List of damage items",
+                "Statement of loss or incident report",
+                "And any other supporting claim documents"
+              ]
             }
-          ].map((doc, index) => (
+          ].map((insurance, index) => (
             <Grid 
               item 
               xs={12} 
               sm={6} 
-              md={4}
+              md={6}
+              lg={4}
               key={index}
               sx={{ 
                 display: 'flex',
-                minHeight: { xs: 'auto', sm: '200px', md: '220px' }
+                minHeight: { xs: 'auto', sm: '300px', md: '350px' }
               }}
             >
               <Card elevation={0} sx={{
@@ -322,8 +436,8 @@ export default function Claims() {
                 display: 'flex',
                 flexDirection: 'column',
                 '&:hover': { 
-                  transform: 'translateY(-4px)', 
-                  boxShadow: '0 12px 24px rgba(0,0,0,0.08)' 
+                  transform: 'translateY(-6px)', 
+                  boxShadow: '0 16px 30px rgba(0,0,0,0.08)' 
                 }
               }}>
                 <CardContent sx={{ 
@@ -341,48 +455,103 @@ export default function Claims() {
                       justifyContent: 'center'
                     }}>
                       <Typography 
-                        variant="h2" 
+                        variant="h1" 
                         sx={{ 
-                          fontSize: { xs: '2.5rem', md: '3rem' },
+                          fontSize: { xs: '3rem', md: '4rem' },
                           lineHeight: 1
                         }}
                       >
-                        {doc.icon}
+                        {insurance.icon}
                       </Typography>
                     </Box>
+                    
                     <Typography 
-                      variant="h6" 
+                      variant="h5" 
                       sx={{ 
                         color: '#003366', 
                         fontWeight: 700,
-                        mb: { xs: 1, md: 1.5 },
-                        fontSize: { xs: '1.1rem', md: '1.2rem' }
+                        mb: { xs: 1.5, md: 2 },
+                        fontSize: { xs: '1.2rem', md: '1.4rem' }
                       }}
                     >
-                      {doc.title}
+                      {insurance.title}
                     </Typography>
+                    
                     <Typography 
-                      variant="body2" 
+                      variant="body1" 
                       sx={{ 
                         color: 'rgba(0,0,0,0.7)',
                         lineHeight: 1.6,
                         fontSize: { xs: '0.9rem', md: '1rem' },
-                        mb: 2
+                        mb: 3
                       }}
                     >
-                      {doc.description}
+                      {insurance.description}
                     </Typography>
-                    <Chip 
-                      label={doc.category} 
-                      size="small"
-                      sx={{ 
-                        backgroundColor: doc.category === 'Essential' ? '#e3f2fd' : '#fff3e0',
-                        color: doc.category === 'Essential' ? '#1976d2' : '#f57c00',
-                        fontWeight: 600,
-                        fontSize: '0.8rem'
-                      }} 
-                    />
+                    
+                    <Box sx={{ textAlign: 'left', mb: 3 }}>
+                      <Typography 
+                        variant="body2" 
+                        sx={{ 
+                          color: '#003366',
+                          fontWeight: 600,
+                          mb: 1.5,
+                          fontSize: '0.9rem'
+                        }}
+                      >
+                        Required Documents:
+                      </Typography>
+                      {insurance.requirements.slice(0, 3).map((req, reqIndex) => (
+                        <Typography 
+                          key={reqIndex}
+                          variant="body2" 
+                          sx={{ 
+                            color: 'rgba(0,0,0,0.6)',
+                            fontSize: '0.8rem',
+                            mb: 0.5,
+                            display: 'flex',
+                            alignItems: 'flex-start'
+                          }}
+                        >
+                          <Box component="span" sx={{ mr: 1, mt: 0.2 }}>•</Box>
+                          {req}
+                        </Typography>
+                      ))}
+                      {insurance.requirements.length > 3 && (
+                        <Typography 
+                          variant="body2" 
+                          sx={{ 
+                            color: '#1976d2',
+                            fontSize: '0.8rem',
+                            fontWeight: 600,
+                            fontStyle: 'italic'
+                          }}
+                        >
+                          +{insurance.requirements.length - 3} more documents...
+                        </Typography>
+                      )}
+                    </Box>
                   </Box>
+                  
+                  <Button
+                    variant="outlined"
+                    onClick={() => handleViewAllRequirements(insurance)}
+                    sx={{
+                      borderColor: '#003366',
+                      color: '#003366',
+                      fontWeight: 600,
+                      py: 1,
+                      px: 2,
+                      borderRadius: 2,
+                      fontSize: '0.9rem',
+                      '&:hover': {
+                        borderColor: '#004a99',
+                        backgroundColor: 'rgba(0, 51, 102, 0.04)'
+                      }
+                    }}
+                  >
+                    View All Requirements
+                  </Button>
                 </CardContent>
               </Card>
             </Grid>
@@ -392,6 +561,153 @@ export default function Claims() {
 
       {/* Claims Form */}
       <ClaimFormSection />
+
+      {/* Requirements Modal */}
+      <Dialog
+        open={modalOpen}
+        onClose={handleCloseModal}
+        maxWidth="md"
+        fullWidth
+        PaperProps={{
+          sx: {
+            borderRadius: 3,
+            maxHeight: '80vh'
+          }
+        }}
+      >
+        <DialogTitle sx={{ 
+          backgroundColor: '#003366', 
+          color: 'white',
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          py: 2
+        }}>
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+            <Typography variant="h4" sx={{ fontSize: '2rem' }}>
+              {selectedInsurance?.icon}
+            </Typography>
+            <Box>
+              <Typography variant="h5" sx={{ fontWeight: 700, mb: 0.5 }}>
+                {selectedInsurance?.title}
+              </Typography>
+              <Typography variant="body2" sx={{ opacity: 0.9 }}>
+                Required Documents
+              </Typography>
+            </Box>
+          </Box>
+          <IconButton
+            onClick={handleCloseModal}
+            sx={{ color: 'white' }}
+          >
+            <CloseIcon />
+          </IconButton>
+        </DialogTitle>
+        
+        <DialogContent sx={{ p: 4 }}>
+          <Typography 
+            variant="body1" 
+            sx={{ 
+              color: 'rgba(0,0,0,0.7)', 
+              mb: 3,
+              fontSize: '1.1rem',
+              lineHeight: 1.6
+            }}
+          >
+            {selectedInsurance?.description}
+          </Typography>
+          
+          <Typography 
+            variant="h6" 
+            sx={{ 
+              color: '#003366', 
+              fontWeight: 700, 
+              mb: 2,
+              fontSize: '1.2rem'
+            }}
+          >
+            Complete List of Required Documents:
+          </Typography>
+          
+          <List sx={{ bgcolor: '#f8f9fa', borderRadius: 2, p: 2 }}>
+            {selectedInsurance?.requirements.map((requirement, index) => (
+              <ListItem key={index} sx={{ py: 1, px: 0 }}>
+                <ListItemText
+                  primary={
+                    <Typography 
+                      variant="body1" 
+                      sx={{ 
+                        fontSize: '1rem',
+                        lineHeight: 1.5,
+                        color: '#333'
+                      }}
+                    >
+                      {requirement}
+                    </Typography>
+                  }
+                  sx={{
+                    '& .MuiListItemText-primary': {
+                      display: 'flex',
+                      alignItems: 'flex-start'
+                    }
+                  }}
+                />
+                <Box 
+                  component="span" 
+                  sx={{ 
+                    color: '#003366',
+                    fontWeight: 'bold',
+                    mr: 2,
+                    mt: 0.2,
+                    fontSize: '1.2rem'
+                  }}
+                >
+                  •
+                </Box>
+              </ListItem>
+            ))}
+          </List>
+          
+          <Box sx={{ 
+            mt: 3, 
+            p: 2, 
+            backgroundColor: '#e3f2fd', 
+            borderRadius: 2,
+            border: '1px solid #bbdefb'
+          }}>
+            <Typography 
+              variant="body2" 
+              sx={{ 
+                color: '#1976d2',
+                fontWeight: 600,
+                fontStyle: 'italic'
+              }}
+            >
+              💡 Tip: Make sure to gather all these documents before submitting your claim to avoid delays in processing.
+            </Typography>
+          </Box>
+        </DialogContent>
+        
+        <DialogActions sx={{ p: 3, pt: 0 }}>
+          <Button
+            onClick={handleCloseModal}
+            variant="contained"
+            sx={{
+              backgroundColor: '#003366',
+              color: 'white',
+              px: 4,
+              py: 1.5,
+              borderRadius: 2,
+              fontWeight: 600,
+              '&:hover': {
+                backgroundColor: '#004a99'
+              }
+            }}
+          >
+            Got It
+          </Button>
+        </DialogActions>
+      </Dialog>
 
     </Container>
   );

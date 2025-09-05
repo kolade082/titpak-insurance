@@ -19,8 +19,8 @@ function App() {
         <Route path="/titpak-insurance/claims" element={<Claims />} />
         <Route path="/titpak-insurance/contact" element={<Contact />} />
         <Route path="/titpak-insurance/faqs" element={<FAQ />} />
-        <Route path="/who-we-are/about-us" element={<AboutUs />} />
-        <Route path="/who-we-are/leadership" element={<Leadership />} />
+        <Route path="/titpak-insurance/about-us" element={<AboutUs />} />
+        <Route path="/titpak-insurance/leadership" element={<Leadership />} />
         <Route path="/titpak-insurance/get-quote" element={<GetQuote />} />
       </Routes>
       <Footer />

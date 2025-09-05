@@ -205,7 +205,7 @@ export default function NavBar() {
             >
               <MenuItem
                 component={Link}
-                to="/who-we-are/about-us"
+                to="/titpak-insurance/about-us"
                 onClick={handleMenuClose}
                 sx={{
                   py: 1.5,
@@ -225,7 +225,7 @@ export default function NavBar() {
               </MenuItem>
               <MenuItem
                 component={Link}
-                to="/who-we-are/leadership"
+                to="/titpak-insurance/leadership"
                 onClick={handleMenuClose}
                 sx={{
                   py: 1.5,
@@ -516,7 +516,7 @@ export default function NavBar() {
                 <ListItem
                   button
                   component={Link}
-                  to="/who-we-are/about-us"
+                  to="/titpak-insurance/about-us"
                   onClick={() => setDrawerOpen(false)}
                   sx={{
                     pl: 4,
@@ -537,7 +537,7 @@ export default function NavBar() {
                 <ListItem
                   button
                   component={Link}
-                  to="/who-we-are/leadership"
+                  to="/titpak-insurance/leadership"
                   onClick={() => setDrawerOpen(false)}
                   sx={{
                     pl: 4,
