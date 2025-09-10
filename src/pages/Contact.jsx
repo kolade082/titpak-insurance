@@ -13,6 +13,7 @@ import {
   Avatar,
   TextField,
   Paper,
+  CircularProgress,
 } from "@mui/material";
 import { keyframes } from "@mui/system";
 import ContactMailIcon from "@mui/icons-material/ContactMail";
@@ -22,6 +23,8 @@ import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import SendIcon from "@mui/icons-material/Send";
 import BusinessIcon from "@mui/icons-material/Business";
 import Footer from "../components/Footer";
+import NotificationToast from "../components/NotificationToast";
+import { sendContactEmail } from "../config/emailjs";
 
 // Fade-in animation
 const fadeIn = keyframes`
@@ -38,6 +41,13 @@ export default function Contact() {
     message: "",
   });
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [notification, setNotification] = useState({
+    open: false,
+    message: "",
+    severity: "success",
+  });
+
   const handleContactFormChange = (field) => (event) => {
     setContactForm((prev) => ({
       ...prev,
@@ -45,10 +55,48 @@ export default function Contact() {
     }));
   };
 
-  const handleContactSubmit = (event) => {
+  const handleContactSubmit = async (event) => {
     event.preventDefault();
-    console.log("Contact form submitted:", contactForm);
-    alert("Thank you for your message! We'll get back to you within 24 hours.");
+    setIsSubmitting(true);
+
+    try {
+      const result = await sendContactEmail(contactForm);
+      
+      if (result.success) {
+        setNotification({
+          open: true,
+          message: "Your message has been sent successfully! Our team will review your inquiry and respond within 24 hours. We appreciate your interest in Titpak Insurance.",
+          severity: "success",
+        });
+        // Reset form
+        setContactForm({
+          name: "",
+          email: "",
+          phone: "",
+          subject: "",
+          message: "",
+        });
+      } else {
+        setNotification({
+          open: true,
+          message: "We're sorry, but there was an issue sending your message. Please check your internet connection and try again, or contact us directly at titpakinsbrokersltd@gmail.com.",
+          severity: "error",
+        });
+      }
+    } catch (error) {
+      console.error("Error submitting contact form:", error);
+      setNotification({
+        open: true,
+        message: "We're experiencing technical difficulties. Please try again in a few moments or contact us directly at +234 (0) 913-752-9774.",
+        severity: "error",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const handleCloseNotification = () => {
+    setNotification({ ...notification, open: false });
   };
 
   const officeLocations = [
@@ -606,7 +654,8 @@ export default function Contact() {
                       type="submit"
                       variant="contained"
                       size="large"
-                      startIcon={<SendIcon />}
+                      startIcon={isSubmitting ? <CircularProgress size={20} color="inherit" /> : <SendIcon />}
+                      disabled={isSubmitting}
                       sx={{
                         background:
                           "linear-gradient(135deg, #003366 0%, #004a99 100%)",
@@ -626,10 +675,15 @@ export default function Contact() {
                           transform: "translateY(-3px)",
                           boxShadow: "0 12px 32px rgba(0, 51, 102, 0.4)",
                         },
+                        "&:disabled": {
+                          background: "rgba(0, 51, 102, 0.5)",
+                          transform: "none",
+                          boxShadow: "0 8px 24px rgba(0, 51, 102, 0.2)",
+                        },
                         transition: "all 0.3s ease",
                       }}
                     >
-                      Send Message
+                      {isSubmitting ? "Sending..." : "Send Message"}
                     </Button>
                   </Box>
                 </Grid>
@@ -638,6 +692,15 @@ export default function Contact() {
           </Box>
         </Paper>
       </Box>
+
+      {/* Enhanced Notification Toast */}
+      <NotificationToast
+        open={notification.open}
+        onClose={handleCloseNotification}
+        message={notification.message}
+        severity={notification.severity}
+        duration={8000}
+      />
     </Container>
   );
 }

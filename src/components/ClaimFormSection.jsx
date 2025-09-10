@@ -8,13 +8,17 @@ import {
   Button,
   Avatar,
   MenuItem,
+  CircularProgress,
 } from "@mui/material";
 import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import ReportProblemIcon from "@mui/icons-material/ReportProblem";
+import NotificationToast from "./NotificationToast";
+import { sendClaimsEmail } from "../config/emailjs";
 
 const ClaimFormSection = () => {
   const [claimsForm, setClaimsForm] = useState({
+    fullName: "",
     policyNumber: "",
     dateOfLoss: null,
     email: "",
@@ -22,6 +26,13 @@ const ClaimFormSection = () => {
     location: "",
     natureOfLoss: "",
     narration: "",
+  });
+
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [notification, setNotification] = useState({
+    open: false,
+    message: "",
+    severity: "success",
   });
 
   const handleClaimsFormChange = (field) => (event) => {
@@ -38,11 +49,51 @@ const ClaimFormSection = () => {
     }));
   };
 
-  const handleClaimsSubmit = (event) => {
+  const handleClaimsSubmit = async (event) => {
     event.preventDefault();
-    console.log("Claims form submitted:", claimsForm);
-    // Here you would typically send the data to your backend
-    alert("Claim submitted successfully! We will contact you shortly.");
+    setIsSubmitting(true);
+
+    try {
+      const result = await sendClaimsEmail(claimsForm);
+      
+      if (result.success) {
+        setNotification({
+          open: true,
+          message: "Your claim has been submitted successfully! We've received your claim details and our claims team will review your case. You'll receive a confirmation email shortly and we'll contact you within 2 business days.",
+          severity: "success",
+        });
+        // Reset form
+        setClaimsForm({
+          fullName: "",
+          policyNumber: "",
+          dateOfLoss: null,
+          email: "",
+          phone: "",
+          location: "",
+          natureOfLoss: "",
+          narration: "",
+        });
+      } else {
+        setNotification({
+          open: true,
+          message: "We're sorry, but there was an issue submitting your claim. Please check your internet connection and try again, or contact our claims department directly at titpakinsbrokersltd@gmail.com.",
+          severity: "error",
+        });
+      }
+    } catch (error) {
+      console.error("Error submitting claims form:", error);
+      setNotification({
+        open: true,
+        message: "We're experiencing technical difficulties with our claims system. Please try again in a few moments or contact our claims hotline at +234 (0) 913-752-9774 for immediate assistance.",
+        severity: "error",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const handleCloseNotification = () => {
+    setNotification({ ...notification, open: false });
   };
 
   const natureOfLossOptions = [
@@ -180,6 +231,18 @@ const ClaimFormSection = () => {
                   Policy & Contact Information
                 </Typography>
                 <Grid container spacing={4} sx={{ width: "100%" }}>
+                  <Grid item xs={12} sx={{ width: "100%" }}>
+                    <TextField
+                      fullWidth
+                      label="Full Name"
+                      value={claimsForm.fullName}
+                      onChange={handleClaimsFormChange("fullName")}
+                      required
+                      variant="outlined"
+                      placeholder="Enter your full name"
+                      sx={{ minWidth: { xs: 250, md: 500 } }}
+                    />
+                  </Grid>
                   <Grid item xs={12} sx={{ width: "100%" }}>
                     <TextField
                       fullWidth
@@ -327,6 +390,8 @@ const ClaimFormSection = () => {
                   type="submit"
                   variant="contained"
                   size="large"
+                  disabled={isSubmitting}
+                  startIcon={isSubmitting ? <CircularProgress size={20} color="inherit" /> : null}
                   sx={{
                     background:
                       "linear-gradient(135deg, #003366 0%, #004a99 100%)",
@@ -344,16 +409,30 @@ const ClaimFormSection = () => {
                       transform: "translateY(-3px)",
                       boxShadow: "0 12px 32px rgba(0, 51, 102, 0.4)",
                     },
+                    "&:disabled": {
+                      background: "rgba(0, 51, 102, 0.5)",
+                      transform: "none",
+                      boxShadow: "0 8px 24px rgba(0, 51, 102, 0.2)",
+                    },
                     transition: "all 0.3s ease",
                   }}
                 >
-                  Submit Claim Request
+                  {isSubmitting ? "Submitting..." : "Submit Claim Request"}
                 </Button>
               </Box>
             </form>
           </Box>
         </Paper>
       </Box>
+
+      {/* Enhanced Notification Toast */}
+      <NotificationToast
+        open={notification.open}
+        onClose={handleCloseNotification}
+        message={notification.message}
+        severity={notification.severity}
+        duration={8000}
+      />
     </LocalizationProvider>
   );
 };
