@@ -57,15 +57,18 @@ export default function NavBar() {
   const [whoWeAreOpen, setWhoWeAreOpen] = useState(false);
 
   const whatWeDoItems = [
-    { text: "Fire", link: "/what-we-do/fire" },
-    { text: "Marine Cargo", link: "/what-we-do/marine-cargo" },
-    { text: "Marine Hull", link: "/what-we-do/marine-hull" },
-    { text: "Motor", link: "/what-we-do/motor" },
-    { text: "Engineering", link: "/what-we-do/engineering" },
-    { text: "All General Accident", link: "/what-we-do/general-accident" },
-    { text: "Aviation", link: "/what-we-do/aviation" },
-    { text: "Oil/Gas", link: "/what-we-do/oil-gas" },
-    { text: "Life Insurance", link: "/what-we-do/life" },
+    { text: "Aviation", link: "/titpak-insurance/what-we-do/aviation" },
+    { text: "Marine Hull & Cargo", link: "/titpak-insurance/what-we-do/marine-hull-cargo" },
+    { text: "Oil, Gas & Energy", link: "/titpak-insurance/what-we-do/oil-gas-energy" },
+    { text: "Motor", link: "/titpak-insurance/what-we-do/motor" },
+    { text: "Engineering All Risks", link: "/titpak-insurance/what-we-do/engineering-all-risks" },
+    { text: "Fire/Special Risks", link: "/titpak-insurance/what-we-do/fire" },
+    { text: "Erection All Risks", link: "/titpak-insurance/what-we-do/erection-all-risks" },
+    { text: "Burglary", link: "/titpak-insurance/what-we-do/burglary" },
+    { text: "Householders", link: "/titpak-insurance/what-we-do/householders" },
+    { text: "Goods-In-Transit", link: "/titpak-insurance/what-we-do/goods-in-transit" },
+    { text: "Fidelity Guarantee", link: "/titpak-insurance/what-we-do/fidelity-guarantee" },
+    { text: "Group Personal Accident", link: "/titpak-insurance/what-we-do/group-personal-accident" },
   ];
 
   return (

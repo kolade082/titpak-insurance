@@ -9,6 +9,9 @@ import Contact from './pages/Contact'
 import AboutUs from './pages/AboutUs'
 import Leadership from './pages/Leadership'
 import GetQuote from './pages/GetQuote'
+import AviationInsurance from './pages/AviationInsurance'
+import MarineHullCargoInsurance from './pages/MarineHullCargoInsurance'
+import OilGasEnergyInsurance from './pages/OilGasEnergyInsurance'
 
 function App() {
   return (
@@ -22,6 +25,9 @@ function App() {
         <Route path="/titpak-insurance/about-us" element={<AboutUs />} />
         <Route path="/titpak-insurance/leadership" element={<Leadership />} />
         <Route path="/titpak-insurance/get-quote" element={<GetQuote />} />
+        <Route path="/titpak-insurance/what-we-do/aviation" element={<AviationInsurance />} />
+        <Route path="/titpak-insurance/what-we-do/marine-hull-cargo" element={<MarineHullCargoInsurance />} />
+        <Route path="/titpak-insurance/what-we-do/oil-gas-energy" element={<OilGasEnergyInsurance />} />
       </Routes>
       <Footer />
     </div>
