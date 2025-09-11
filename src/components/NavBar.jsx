@@ -13,12 +13,15 @@ import {
   ListItemText,
   Box,
   Collapse,
+  ListItemButton,
+  ListItemIcon,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
 import ExpandLess from "@mui/icons-material/ExpandLess";
 import ExpandMore from "@mui/icons-material/ExpandMore";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import { Link } from "react-router-dom";
 
 import logo from "../assets/logo.jpg";
@@ -27,8 +30,11 @@ export default function NavBar() {
   // Desktop dropdowns
   const [whatWeDoAnchorEl, setWhatWeDoAnchorEl] = useState(null);
   const [whoWeAreAnchorEl, setWhoWeAreAnchorEl] = useState(null);
+  const [subMenuAnchorEl, setSubMenuAnchorEl] = useState(null);
+  const [subMenuItems, setSubMenuItems] = useState([]);
   const whatWeDoDropdownOpen = Boolean(whatWeDoAnchorEl);
   const whoWeAreDropdownOpen = Boolean(whoWeAreAnchorEl);
+  const subMenuOpen = Boolean(subMenuAnchorEl);
 
   const handleWhatWeDoToggle = (event) => {
     if (whatWeDoDropdownOpen) {
@@ -49,12 +55,25 @@ export default function NavBar() {
   const handleMenuClose = () => {
     setWhatWeDoAnchorEl(null);
     setWhoWeAreAnchorEl(null);
+    setSubMenuAnchorEl(null);
+  };
+
+  const handleSubMenuOpen = (event, items) => {
+    setSubMenuAnchorEl(event.currentTarget);
+    setSubMenuItems(items);
+  };
+
+  const handleSubMenuClose = () => {
+    setSubMenuAnchorEl(null);
+    setSubMenuItems([]);
   };
 
   // Mobile drawer
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [whatWeDoOpen, setWhatWeDoOpen] = useState(false);
   const [whoWeAreOpen, setWhoWeAreOpen] = useState(false);
+  const [lifeInsuranceOpen, setLifeInsuranceOpen] = useState(false);
+  const [generalAccidentOpen, setGeneralAccidentOpen] = useState(false);
 
   const whatWeDoItems = [
     { text: "Aviation", link: "/titpak-insurance/what-we-do/aviation" },
@@ -63,12 +82,27 @@ export default function NavBar() {
     { text: "Motor", link: "/titpak-insurance/what-we-do/motor" },
     { text: "Engineering All Risks", link: "/titpak-insurance/what-we-do/engineering-all-risks" },
     { text: "Fire/Special Risks", link: "/titpak-insurance/what-we-do/fire" },
-    { text: "Erection All Risks", link: "/titpak-insurance/what-we-do/erection-all-risks" },
-    { text: "Burglary", link: "/titpak-insurance/what-we-do/burglary" },
     { text: "Householders", link: "/titpak-insurance/what-we-do/householders" },
-    { text: "Goods-In-Transit", link: "/titpak-insurance/what-we-do/goods-in-transit" },
-    { text: "Fidelity Guarantee", link: "/titpak-insurance/what-we-do/fidelity-guarantee" },
-    { text: "Group Personal Accident", link: "/titpak-insurance/what-we-do/group-personal-accident" },
+    { 
+      text: "Life Insurance", 
+      hasSubMenu: true,
+      subItems: [
+        { text: "Whole Life", link: "/titpak-insurance/what-we-do/life-insurance/whole-life" },
+        { text: "Term Life", link: "/titpak-insurance/what-we-do/life-insurance/term-life" },
+        { text: "Group Life", link: "/titpak-insurance/what-we-do/life-insurance/group-life" }
+      ]
+    },
+    { 
+      text: "General Accident Insurance",
+      hasSubMenu: true,
+      subItems: [
+        { text: "Burglary", link: "/titpak-insurance/what-we-do/general-accident/burglary" },
+        { text: "Money", link: "/titpak-insurance/what-we-do/general-accident/money" },
+        { text: "Goods in Transit", link: "/titpak-insurance/what-we-do/general-accident/goods-in-transit" },
+        { text: "Fidelity Guarantee", link: "/titpak-insurance/what-we-do/general-accident/fidelity-guarantee" },
+        { text: "Group Personal Accident", link: "/titpak-insurance/what-we-do/general-accident/group-personal-accident" }
+      ]
+    },
   ];
 
   return (
@@ -266,9 +300,9 @@ export default function NavBar() {
               {whatWeDoItems.map((item) => (
                 <MenuItem
                   key={item.text}
-                  component={Link}
-                  to={item.link}
-                  onClick={handleMenuClose}
+                  component={item.hasSubMenu ? "div" : Link}
+                  to={item.hasSubMenu ? undefined : item.link}
+                  onClick={item.hasSubMenu ? (e) => handleSubMenuOpen(e, item.subItems) : handleMenuClose}
                   sx={{
                     py: 1.5,
                     px: 3,
@@ -283,9 +317,66 @@ export default function NavBar() {
                       color: "#004a99",
                     },
                     transition: "all 0.2s ease",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "space-between",
                   }}
                 >
                   {item.text}
+                  {item.hasSubMenu && (
+                    <ChevronRightIcon sx={{ fontSize: 16, ml: 1 }} />
+                  )}
+                </MenuItem>
+              ))}
+            </Menu>
+
+            {/* Sub-menu for What We Do */}
+            <Menu
+              anchorEl={subMenuAnchorEl}
+              open={subMenuOpen}
+              onClose={handleSubMenuClose}
+              anchorOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+              }}
+              transformOrigin={{
+                vertical: 'top',
+                horizontal: 'left',
+              }}
+              PaperProps={{
+                sx: {
+                  mt: 1,
+                  minWidth: 200,
+                  boxShadow: "0 8px 32px rgba(0,0,0,0.15)",
+                  border: "1px solid rgba(0,0,0,0.08)",
+                  borderRadius: 2,
+                  overflow: "hidden",
+                },
+              }}
+            >
+              {subMenuItems.map((subItem) => (
+                <MenuItem
+                  key={subItem.text}
+                  component={Link}
+                  to={subItem.link}
+                  onClick={handleMenuClose}
+                  sx={{
+                    py: 1.5,
+                    px: 3,
+                    fontSize: "0.9rem",
+                    fontWeight: 500,
+                    color: "#003366",
+                    borderBottom: "1px solid rgba(0,0,0,0.04)",
+                    "&:last-child": { borderBottom: "none" },
+                    "&:hover": {
+                      backgroundColor: "rgba(0, 51, 102, 0.06)",
+                      transform: "translateX(4px)",
+                      color: "#004a99",
+                    },
+                    transition: "all 0.2s ease",
+                  }}
+                >
+                  {subItem.text}
                 </MenuItem>
               ))}
             </Menu>
@@ -464,28 +555,96 @@ export default function NavBar() {
             <Collapse in={whatWeDoOpen} timeout="auto" unmountOnExit>
               <List component="div" disablePadding>
                 {whatWeDoItems.map((sub) => (
-                  <ListItem
-                    key={sub.text}
-                    button
-                    component={Link}
-                    to={sub.link}
-                    onClick={() => setDrawerOpen(false)}
-                    sx={{
-                      pl: 4,
-                      borderRadius: 2,
-                      ml: 1,
-                      mb: 0.5,
-                      "&:hover": { backgroundColor: "rgba(0, 51, 102, 0.04)" },
-                    }}
-                  >
-                    <ListItemText
-                      primary={sub.text}
-                      sx={{
-                        color: "#666",
-                        "& .MuiTypography-root": { fontSize: "0.9rem" },
-                      }}
-                    />
-                  </ListItem>
+                  <React.Fragment key={sub.text}>
+                    {sub.hasSubMenu ? (
+                      <>
+                        <ListItem
+                          button
+                          onClick={() => {
+                            if (sub.text === "Life Insurance") {
+                              setLifeInsuranceOpen(!lifeInsuranceOpen);
+                            } else if (sub.text === "General Accident Insurance") {
+                              setGeneralAccidentOpen(!generalAccidentOpen);
+                            }
+                          }}
+                          sx={{
+                            pl: 4,
+                            borderRadius: 2,
+                            ml: 1,
+                            mb: 0.5,
+                            "&:hover": { backgroundColor: "rgba(0, 51, 102, 0.04)" },
+                          }}
+                        >
+                          <ListItemText
+                            primary={sub.text}
+                            sx={{
+                              color: "#666",
+                              "& .MuiTypography-root": { fontSize: "0.9rem" },
+                            }}
+                          />
+                          {(sub.text === "Life Insurance" ? lifeInsuranceOpen : generalAccidentOpen) ? (
+                            <ExpandLess sx={{ color: "#666" }} />
+                          ) : (
+                            <ExpandMore sx={{ color: "#666" }} />
+                          )}
+                        </ListItem>
+                        <Collapse 
+                          in={sub.text === "Life Insurance" ? lifeInsuranceOpen : generalAccidentOpen} 
+                          timeout="auto" 
+                          unmountOnExit
+                        >
+                          <List component="div" disablePadding>
+                            {sub.subItems.map((subSubItem) => (
+                              <ListItem
+                                key={subSubItem.text}
+                                button
+                                component={Link}
+                                to={subSubItem.link}
+                                onClick={() => setDrawerOpen(false)}
+                                sx={{
+                                  pl: 6,
+                                  borderRadius: 2,
+                                  ml: 1,
+                                  mb: 0.5,
+                                  "&:hover": { backgroundColor: "rgba(0, 51, 102, 0.04)" },
+                                }}
+                              >
+                                <ListItemText
+                                  primary={subSubItem.text}
+                                  sx={{
+                                    color: "#888",
+                                    "& .MuiTypography-root": { fontSize: "0.85rem" },
+                                  }}
+                                />
+                              </ListItem>
+                            ))}
+                          </List>
+                        </Collapse>
+                      </>
+                    ) : (
+                      <ListItem
+                        button
+                        component={Link}
+                        to={sub.link}
+                        onClick={() => setDrawerOpen(false)}
+                        sx={{
+                          pl: 4,
+                          borderRadius: 2,
+                          ml: 1,
+                          mb: 0.5,
+                          "&:hover": { backgroundColor: "rgba(0, 51, 102, 0.04)" },
+                        }}
+                      >
+                        <ListItemText
+                          primary={sub.text}
+                          sx={{
+                            color: "#666",
+                            "& .MuiTypography-root": { fontSize: "0.9rem" },
+                          }}
+                        />
+                      </ListItem>
+                    )}
+                  </React.Fragment>
                 ))}
               </List>
             </Collapse>

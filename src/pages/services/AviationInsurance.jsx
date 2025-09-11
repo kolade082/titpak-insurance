@@ -1,5 +1,5 @@
 import React from "react";
-import InsuranceServicePage from "../components/InsuranceServicePage";
+import InsuranceServicePage from "../../components/InsuranceServicePage";
 
 const AviationInsurance = () => {
   const serviceData = {
@@ -96,12 +96,18 @@ const AviationInsurance = () => {
     }
   ];
 
+  const images = [
+    `${import.meta.env.BASE_URL}assets/service-images/aviation/1.webp`,
+    `${import.meta.env.BASE_URL}assets/service-images/aviation/2.jpg`,
+  ];
+
   return (
     <InsuranceServicePage
       serviceData={serviceData}
       features={features}
       benefits={benefits} 
       coverage={coverage}
+      images={images}
     />
   );
 };

@@ -1,5 +1,5 @@
 import React from "react";
-import InsuranceServicePage from "../components/InsuranceServicePage";
+import InsuranceServicePage from "../../components/InsuranceServicePage";
 
 const OilGasEnergyInsurance = () => {
   const serviceData = {
@@ -96,12 +96,18 @@ const OilGasEnergyInsurance = () => {
     }
   ];
 
+  const images = [
+    `${import.meta.env.BASE_URL}assets/service-images/oil-gas/1.jpg`,
+    `${import.meta.env.BASE_URL}assets/service-images/oil-gas/2.jpeg`
+  ];
+
   return (
     <InsuranceServicePage
       serviceData={serviceData}
       features={features}
       benefits={benefits}
       coverage={coverage}
+      images={images}
     />
   );
 };

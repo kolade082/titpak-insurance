@@ -51,12 +51,48 @@ export default function Home() {
   ];
 
   const services = [
-    "Fire Insurance",
-    "Marine Insurance",
-    "Motor Insurance",
-    "Life Insurance",
-    "Property Insurance",
-    "Business Insurance",
+    {
+      title: "Aviation Insurance",
+      description: "Comprehensive coverage for aircraft, airlines, and aviation-related risks.",
+      link: "/titpak-insurance/what-we-do/aviation",
+      icon: "✈️",
+      image: "./assets/service-images/aviation/1.webp"
+    },
+    {
+      title: "Marine Hull & Cargo",
+      description: "Protection for vessels, cargo, and marine transportation risks.",
+      link: "/titpak-insurance/what-we-do/marine-hull-cargo",
+      icon: "🚢",
+      image: "./assets/service-images/marine/1.jpg"
+    },
+    {
+      title: "Motor Insurance",
+      description: "Third party, fire & theft, and comprehensive vehicle coverage.",
+      link: "/titpak-insurance/what-we-do/motor",
+      icon: "🚗",
+      image: "./assets/service-images/motor/1.webp"
+    },
+    {
+      title: "Fire Insurance",
+      description: "Protection against fire, lightning, and special perils for property.",
+      link: "/titpak-insurance/what-we-do/fire",
+      icon: "🔥",
+      image: "./assets/service-images/fire/2.jpg"
+    },
+    {
+      title: "Life Insurance",
+      description: "Whole life, term life, and group life insurance solutions.",
+      link: "/titpak-insurance/what-we-do/life-insurance/whole-life",
+      icon: "🛡️",
+      image: "./assets/service-images/life/whole-life.png"
+    },
+    {
+      title: "Engineering Insurance",
+      description: "Construction All Risks (CAR), Erection All Risks (EAR), and Plant All Risks (PAR).",
+      link: "/titpak-insurance/what-we-do/engineering-all-risks",
+      icon: "🏗️",
+      image: "./assets/service-images/engineering/1.jpg"
+    },
   ];
 
   const faqs = [
@@ -236,67 +272,118 @@ export default function Home() {
           gap: 2.5,
         }}
       >
-        {services.map((title, idx) => {
-          const slug = title.toLowerCase().replace(/\s+/g, "-");
-          const descMap = {
-            "fire-insurance":
-              "Protect against fire, lightning, and allied perils for homes and businesses.",
-            "marine-insurance":
-              "Cover cargo, hull, and transit risks across sea and inland waterways.",
-            "motor-insurance":
-              "Comprehensive and third‑party cover for personal and commercial vehicles.",
-            "life-insurance":
-              "Financial protection for your loved ones with flexible policy options.",
-            "property-insurance":
-              "Safeguard residential and commercial property from unforeseen losses.",
-            "business-insurance":
-              "Tailored protection for SMEs and enterprises, including liability cover.",
-          };
-          const key = slug;
-          const desc =
-            descMap[key] ||
-            "Comprehensive coverage designed around your needs.";
-          return (
+        {services.map((service, idx) => (
+          <Box
+            key={idx}
+            sx={{
+              border: "1px solid #e6eef8",
+              borderRadius: 3,
+              overflow: "hidden",
+              backgroundColor: "#fff",
+              display: "flex",
+              flexDirection: "column",
+              transition: "all 0.3s ease",
+              cursor: "pointer",
+              "&:hover": {
+                backgroundColor: "#f8fbff",
+                borderColor: "#d7e6fa",
+                transform: "translateY(-4px)",
+                boxShadow: "0 8px 25px rgba(0,0,0,0.08)",
+              },
+            }}
+          >
+            {/* Service Image */}
             <Box
-              key={idx}
               sx={{
-                border: "1px solid #e6eef8",
-                borderRadius: 2,
-                p: 2.4,
-                backgroundColor: "#fff",
-                display: "flex",
-                flexDirection: "column",
-                gap: 0.75,
-                transition:
-                  "background-color 0.2s ease, border-color 0.2s ease",
-                "&:hover": {
-                  backgroundColor: "#f8fbff",
-                  borderColor: "#d7e6fa",
-                },
+                height: 200,
+                backgroundImage: `url(${service.image})`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+                backgroundRepeat: "no-repeat",
+                position: "relative",
+                "&::before": {
+                  content: '""',
+                  position: "absolute",
+                  top: 0,
+                  left: 0,
+                  right: 0,
+                  bottom: 0,
+                  background: "linear-gradient(135deg, rgba(0,51,102,0.1) 0%, rgba(0,51,102,0.3) 100%)",
+                }
               }}
             >
+              {/* Service Icon Overlay */}
+              <Box
+                sx={{
+                  position: "absolute",
+                  top: 16,
+                  right: 16,
+                  backgroundColor: "rgba(255,255,255,0.9)",
+                  borderRadius: "50%",
+                  width: 48,
+                  height: 48,
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  backdropFilter: "blur(10px)",
+                  boxShadow: "0 4px 12px rgba(0,0,0,0.15)"
+                }}
+              >
+                <Typography
+                  variant="h4"
+                  sx={{ 
+                    fontSize: "1.5rem",
+                    lineHeight: 1,
+                    filter: "drop-shadow(0 2px 4px rgba(0,0,0,0.1))"
+                  }}
+                >
+                  {service.icon}
+                </Typography>
+              </Box>
+            </Box>
+            
+            {/* Service Content */}
+            <Box sx={{ p: 3, display: "flex", flexDirection: "column", gap: 1.5, flexGrow: 1 }}>
               <Typography
                 variant="subtitle1"
-                sx={{ color: "#003366", fontWeight: 700 }}
+                sx={{ color: "#003366", fontWeight: 700, fontSize: "1.1rem" }}
               >
-                {title}
+                {service.title}
               </Typography>
-              <Typography variant="body2" sx={{ color: "rgba(0,0,0,0.7)" }}>
-                {desc}
+              <Typography 
+                variant="body2" 
+                sx={{ 
+                  color: "rgba(0,0,0,0.7)", 
+                  lineHeight: 1.5,
+                  flexGrow: 1
+                }}
+              >
+                {service.description}
               </Typography>
-              <Box sx={{ mt: 0.5 }}>
+              <Box sx={{ mt: 1 }}>
                 <Button
+                  component={Link}
+                  to={service.link}
                   size="small"
                   variant="text"
-                  href={`/services/${slug}`}
-                  sx={{ textTransform: "none", px: 0, color: "#004a99" }}
+                  sx={{ 
+                    textTransform: "none", 
+                    px: 0, 
+                    color: "#004a99",
+                    fontWeight: 600,
+                    "&:hover": {
+                      backgroundColor: "transparent",
+                      color: "#003366",
+                      textDecoration: "underline"
+                    }
+                  }}
                 >
-                  Learn more
+                  Learn more →
                 </Button>
               </Box>
             </Box>
-          );
-        })}
+          </Box>
+        ))}
       </Box>
       <Divider sx={{ maxWidth: 1300, mx: "auto", mb: 6 }}>
         <Chip label="Some FAQs" sx={{ color: "#003366" }} />
