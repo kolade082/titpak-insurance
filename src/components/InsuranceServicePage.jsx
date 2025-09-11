@@ -34,9 +34,10 @@ const InsuranceServicePage = ({
           mb: 8,
           p: { xs: 4, md: 6 },
           borderRadius: 4,
-          background: images && images.length > 0 
-            ? `linear-gradient(135deg, rgba(0,51,102,0.4) 0%, rgba(0,51,102,0.2) 100%), url(${images[0]})`
-            : "linear-gradient(135deg, #f7fbff 0%, #eaf3ff 100%)",
+          background:
+            images && images.length > 0
+              ? `linear-gradient(135deg, rgba(0,51,102,0.4) 0%, rgba(0,51,102,0.2) 100%), url(${images[0]})`
+              : "linear-gradient(135deg, #f7fbff 0%, #eaf3ff 100%)",
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
@@ -140,7 +141,8 @@ const InsuranceServicePage = ({
                   position: "relative",
                   p: 4,
                   borderRadius: 6,
-                  background: "linear-gradient(145deg, #ffffff 0%, #f8f9fa 100%)",
+                  background:
+                    "linear-gradient(145deg, #ffffff 0%, #f8f9fa 100%)",
                   border: "1px solid rgba(0,51,102,0.1)",
                   transition: "all 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
                   cursor: "pointer",
@@ -154,7 +156,7 @@ const InsuranceServicePage = ({
                     },
                     "& .feature-bg": {
                       opacity: 1,
-                    }
+                    },
                   },
                   "&::before": {
                     content: '""',
@@ -167,7 +169,7 @@ const InsuranceServicePage = ({
                     opacity: 0,
                     transition: "opacity 0.4s ease",
                     zIndex: 1,
-                  }
+                  },
                 }}
               >
                 <Box
@@ -185,8 +187,10 @@ const InsuranceServicePage = ({
                     zIndex: 1,
                   }}
                 />
-                
-                <Box sx={{ position: "relative", zIndex: 2, textAlign: "center" }}>
+
+                <Box
+                  sx={{ position: "relative", zIndex: 2, textAlign: "center" }}
+                >
                   <Box
                     className="feature-icon"
                     sx={{
@@ -207,7 +211,7 @@ const InsuranceServicePage = ({
                       {feature.icon}
                     </Typography>
                   </Box>
-                  
+
                   <Typography
                     variant="h5"
                     sx={{
@@ -220,7 +224,7 @@ const InsuranceServicePage = ({
                   >
                     {feature.title}
                   </Typography>
-                  
+
                   <Typography
                     variant="body1"
                     sx={{
@@ -261,7 +265,7 @@ const InsuranceServicePage = ({
                 mx: "auto",
               }}
             >
-              Experience the advantages of working with Titpak Insurance
+              Experience the advantages of working with Titpak Insurance Brokers LTD
             </Typography>
           </Box>
 
@@ -308,7 +312,7 @@ const InsuranceServicePage = ({
                       },
                       "& .benefit-bg": {
                         opacity: 1,
-                      }
+                      },
                     },
                     "&::before": {
                       content: '""',
@@ -321,7 +325,7 @@ const InsuranceServicePage = ({
                       opacity: 0,
                       transition: "opacity 0.4s ease",
                       zIndex: 1,
-                    }
+                    },
                   }}
                 >
                   <Box
@@ -339,7 +343,7 @@ const InsuranceServicePage = ({
                       zIndex: 1,
                     }}
                   />
-                  
+
                   <CardContent
                     sx={{
                       p: { xs: 3, md: 4 },
@@ -372,8 +376,8 @@ const InsuranceServicePage = ({
                         }}
                       >
                         <CheckCircleIcon
-                          sx={{ 
-                            fontSize: 28, 
+                          sx={{
+                            fontSize: 28,
                             color: "#4caf50",
                             transition: "all 0.4s ease",
                           }}
@@ -391,7 +395,7 @@ const InsuranceServicePage = ({
                         {benefit.title}
                       </Typography>
                     </Box>
-                    
+
                     <Typography
                       variant="body1"
                       sx={{
@@ -439,14 +443,15 @@ const InsuranceServicePage = ({
                       left: 0,
                       right: 0,
                       bottom: 0,
-                      background: "linear-gradient(135deg, rgba(0,51,102,0.1) 0%, rgba(76,175,80,0.1) 100%)",
+                      background:
+                        "linear-gradient(135deg, rgba(0,51,102,0.1) 0%, rgba(76,175,80,0.1) 100%)",
                       opacity: 0,
                       transition: "opacity 0.4s ease",
                       zIndex: 1,
                     },
                     "&:hover::before": {
                       opacity: 1,
-                    }
+                    },
                   }}
                 />
               </Box>
