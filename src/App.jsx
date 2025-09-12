@@ -32,7 +32,7 @@ function App() {
       <ScrollToTop />
       <NavBar />
       <Routes>
-        <Route path="/titpak-insurance/" element={<Home />} />
+        <Route path="/" element={<Home />} />
         <Route path="/titpak-insurance/claims" element={<Claims />} />
         <Route path="/titpak-insurance/contact" element={<Contact />} />
         <Route path="/titpak-insurance/faqs" element={<FAQ />} />
