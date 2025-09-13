@@ -2,7 +2,7 @@
   "name": "titpak-insurance",
   "private": true,
   "version": "0.0.0",
-  "homepage": "https://www.titpackinsurancebrokers.com",
+  "homepage": "https://www.titpakinsurancebrokers.com",
   "type": "module",
   "scripts": {
     "dev": "vite",

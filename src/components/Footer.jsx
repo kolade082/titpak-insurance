@@ -54,7 +54,7 @@ export default function Footer() {
             }}
           >
             <MuiLink
-              href="/titpak-insurance/get-quote"
+              href="/get-quote"
               underline="none"
               sx={{ textDecoration: "none" }}
             >
@@ -73,7 +73,7 @@ export default function Footer() {
               />
             </MuiLink>
             <MuiLink
-              href="/titpak-insurance/contact"
+              href="/contact"
               underline="none"
               sx={{ textDecoration: "none" }}
             >
@@ -130,35 +130,35 @@ export default function Footer() {
               </Typography>
               <Stack spacing={1}>
                 <MuiLink
-                  href="/titpak-insurance/"
+                  href="/"
                   underline="hover"
                   color="#cfe3ff"
                 >
                   Home
                 </MuiLink>
                 <MuiLink
-                  href="/titpak-insurance/claims"
+                  href="/claims"
                   underline="hover"
                   color="#cfe3ff"
                 >
                   Claims
                 </MuiLink>
                 <MuiLink
-                  href="/titpak-insurance/get-quote"
+                  href="/get-quote"
                   underline="hover"
                   color="#cfe3ff"
                 >
                   Get Quote
                 </MuiLink>
                 <MuiLink
-                  href="/titpak-insurance/contact"
+                  href="/contact"
                   underline="hover"
                   color="#cfe3ff"
                 >
                   Contact
                 </MuiLink>
                 <MuiLink
-                  href="/titpak-insurance/faqs"
+                  href="/faqs"
                   underline="hover"
                   color="#cfe3ff"
                 >
@@ -175,7 +175,7 @@ export default function Footer() {
               </Typography>
               <Stack spacing={1}>
                                   <MuiLink
-                    href="/titpak-insurance/about-us"
+                    href="/about-us"
                     underline="hover"
                     color="#cfe3ff"
                     sx={{ fontSize: "0.9rem" }}
@@ -183,7 +183,7 @@ export default function Footer() {
                     About Us
                   </MuiLink>
                   <MuiLink
-                    href="/titpak-insurance/leadership"
+                    href="/leadership"
                     underline="hover"
                     color="#cfe3ff"
                     sx={{ fontSize: "0.9rem" }}

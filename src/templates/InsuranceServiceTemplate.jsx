@@ -135,7 +135,7 @@ const InsuranceServiceTemplate = () => {
       coverage={coverage}
       claimsProcess={claimsProcess}
       ctaText="Get [Service Name] Quote" // Customize the CTA button text
-      ctaLink="/titpak-insurance/get-quote" // Keep this as is for now
+      ctaLink="/get-quote" // Keep this as is for now
     />
   );
 };

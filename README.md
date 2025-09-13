@@ -14,7 +14,7 @@ A modern, responsive website for Titpak Insurance Brokers LTD, built with React 
 
 ## 🚀 Live Website
 
-Visit the live website at: [https://www.titpackinsurancebrokers.com](https://www.titpackinsurancebrokers.com)
+Visit the live website at: [https://www.titpakinsurancebrokers.com](https://www.titpakinsurancebrokers.com)
 
 ## 🛠️ Tech Stack
 

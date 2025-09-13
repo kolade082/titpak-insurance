@@ -76,31 +76,31 @@ export default function NavBar() {
   const [generalAccidentOpen, setGeneralAccidentOpen] = useState(false);
 
   const whatWeDoItems = [
-    { text: "Aviation", link: "/titpak-insurance/what-we-do/aviation" },
-    { text: "Marine Hull & Cargo", link: "/titpak-insurance/what-we-do/marine-hull-cargo" },
-    { text: "Oil, Gas & Energy", link: "/titpak-insurance/what-we-do/oil-gas-energy" },
-    { text: "Motor", link: "/titpak-insurance/what-we-do/motor" },
-    { text: "Engineering All Risks", link: "/titpak-insurance/what-we-do/engineering-all-risks" },
-    { text: "Fire/Special Risks", link: "/titpak-insurance/what-we-do/fire" },
-    { text: "Householders", link: "/titpak-insurance/what-we-do/householders" },
+    { text: "Aviation", link: "/what-we-do/aviation" },
+    { text: "Marine Hull & Cargo", link: "/what-we-do/marine-hull-cargo" },
+    { text: "Oil, Gas & Energy", link: "/what-we-do/oil-gas-energy" },
+    { text: "Motor", link: "/what-we-do/motor" },
+    { text: "Engineering All Risks", link: "/what-we-do/engineering-all-risks" },
+    { text: "Fire/Special Risks", link: "/what-we-do/fire" },
+    { text: "Householders", link: "/what-we-do/householders" },
     { 
       text: "Life Insurance", 
       hasSubMenu: true,
       subItems: [
-        { text: "Whole Life", link: "/titpak-insurance/what-we-do/life-insurance/whole-life" },
-        { text: "Term Life", link: "/titpak-insurance/what-we-do/life-insurance/term-life" },
-        { text: "Group Life", link: "/titpak-insurance/what-we-do/life-insurance/group-life" }
+        { text: "Whole Life", link: "/what-we-do/life-insurance/whole-life" },
+        { text: "Term Life", link: "/what-we-do/life-insurance/term-life" },
+        { text: "Group Life", link: "/what-we-do/life-insurance/group-life" }
       ]
     },
     { 
       text: "General Accident Insurance",
       hasSubMenu: true,
       subItems: [
-        { text: "Burglary", link: "/titpak-insurance/what-we-do/general-accident/burglary" },
-        { text: "Money", link: "/titpak-insurance/what-we-do/general-accident/money" },
-        { text: "Goods in Transit", link: "/titpak-insurance/what-we-do/general-accident/goods-in-transit" },
-        { text: "Fidelity Guarantee", link: "/titpak-insurance/what-we-do/general-accident/fidelity-guarantee" },
-        { text: "Group Personal Accident", link: "/titpak-insurance/what-we-do/general-accident/group-personal-accident" }
+        { text: "Burglary", link: "/what-we-do/general-accident/burglary" },
+        { text: "Money", link: "/what-we-do/general-accident/money" },
+        { text: "Goods in Transit", link: "/what-we-do/general-accident/goods-in-transit" },
+        { text: "Fidelity Guarantee", link: "/what-we-do/general-accident/fidelity-guarantee" },
+        { text: "Group Personal Accident", link: "/what-we-do/general-accident/group-personal-accident" }
       ]
     },
   ];
@@ -118,7 +118,7 @@ export default function NavBar() {
       >
         <Toolbar sx={{ py: 1 }}>
           <Box sx={{ flexGrow: 1 }}>
-            <Link to="/titpak-insurance/" style={{ textDecoration: "none" }}>
+            <Link to="/" style={{ textDecoration: "none" }}>
               <img
                 src={logo}
                 alt="Titpak Insurance Logo"
@@ -144,7 +144,7 @@ export default function NavBar() {
             <Button
               color="inherit"
               component={Link}
-              to="/titpak-insurance/"
+              to="/"
               sx={{
                 px: 2,
                 py: 1,
@@ -242,7 +242,7 @@ export default function NavBar() {
             >
               <MenuItem
                 component={Link}
-                to="/titpak-insurance/about-us"
+                to="/about-us"
                 onClick={handleMenuClose}
                 sx={{
                   py: 1.5,
@@ -262,7 +262,7 @@ export default function NavBar() {
               </MenuItem>
               <MenuItem
                 component={Link}
-                to="/titpak-insurance/leadership"
+                to="/leadership"
                 onClick={handleMenuClose}
                 sx={{
                   py: 1.5,
@@ -384,7 +384,7 @@ export default function NavBar() {
             <Button
               color="inherit"
               component={Link}
-              to="/titpak-insurance/claims"
+              to="/claims"
               sx={{
                 px: 2,
                 py: 1,
@@ -404,7 +404,7 @@ export default function NavBar() {
             <Button
               color="inherit"
               component={Link}
-              to="/titpak-insurance/get-quote"
+              to="/get-quote"
               sx={{
                 px: 2,
                 py: 1,
@@ -424,7 +424,7 @@ export default function NavBar() {
             <Button
               color="inherit"
               component={Link}
-              to="/titpak-insurance/contact"
+              to="/contact"
               sx={{
                 px: 2,
                 py: 1,
@@ -444,7 +444,7 @@ export default function NavBar() {
             <Button
               color="inherit"
               component={Link}
-              to="/titpak-insurance/faqs"
+              to="/faqs"
               sx={{
                 px: 2,
                 py: 1,
@@ -510,7 +510,7 @@ export default function NavBar() {
             <ListItem
               button
               component={Link}
-              to="/titpak-insurance/"
+              to="/"
               onClick={() => setDrawerOpen(false)}
               sx={{
                 borderRadius: 2,
@@ -678,7 +678,7 @@ export default function NavBar() {
                 <ListItem
                   button
                   component={Link}
-                  to="/titpak-insurance/about-us"
+                  to="/about-us"
                   onClick={() => setDrawerOpen(false)}
                   sx={{
                     pl: 4,
@@ -699,7 +699,7 @@ export default function NavBar() {
                 <ListItem
                   button
                   component={Link}
-                  to="/titpak-insurance/leadership"
+                  to="/leadership"
                   onClick={() => setDrawerOpen(false)}
                   sx={{
                     pl: 4,
@@ -724,7 +724,7 @@ export default function NavBar() {
             <ListItem
               button
               component={Link}
-              to="/titpak-insurance/claims"
+              to="/claims"
               onClick={() => setDrawerOpen(false)}
               sx={{
                 borderRadius: 2,
@@ -746,7 +746,7 @@ export default function NavBar() {
             <ListItem
               button
               component={Link}
-              to="/titpak-insurance/get-quote"
+              to="/get-quote"
               onClick={() => setDrawerOpen(false)}
               sx={{
                 borderRadius: 2,
@@ -768,7 +768,7 @@ export default function NavBar() {
             <ListItem
               button
               component={Link}
-              to="/titpak-insurance/contact"
+              to="/contact"
               onClick={() => setDrawerOpen(false)}
               sx={{
                 borderRadius: 2,
@@ -790,7 +790,7 @@ export default function NavBar() {
             <ListItem
               button
               component={Link}
-              to="/titpak-insurance/faqs"
+              to="/faqs"
               onClick={() => setDrawerOpen(false)}
               sx={{
                 borderRadius: 2,

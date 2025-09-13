@@ -54,42 +54,42 @@ export default function Home() {
     {
       title: "Aviation Insurance",
       description: "Comprehensive coverage for aircraft, airlines, and aviation-related risks.",
-      link: "/titpak-insurance/what-we-do/aviation",
+      link: "/what-we-do/aviation",
       icon: "✈️",
       image: "./assets/service-images/aviation/1.webp"
     },
     {
       title: "Marine Hull & Cargo",
       description: "Protection for vessels, cargo, and marine transportation risks.",
-      link: "/titpak-insurance/what-we-do/marine-hull-cargo",
+      link: "/what-we-do/marine-hull-cargo",
       icon: "🚢",
       image: "./assets/service-images/marine/1.jpg"
     },
     {
       title: "Motor Insurance",
       description: "Third party, fire & theft, and comprehensive vehicle coverage.",
-      link: "/titpak-insurance/what-we-do/motor",
+      link: "/what-we-do/motor",
       icon: "🚗",
       image: "./assets/service-images/motor/1.webp"
     },
     {
       title: "Fire Insurance",
       description: "Protection against fire, lightning, and special perils for property.",
-      link: "/titpak-insurance/what-we-do/fire",
+      link: "/what-we-do/fire",
       icon: "🔥",
       image: "./assets/service-images/fire/2.jpg"
     },
     {
       title: "Life Insurance",
       description: "Whole life, term life, and group life insurance solutions.",
-      link: "/titpak-insurance/what-we-do/life-insurance/whole-life",
+      link: "/what-we-do/life-insurance/whole-life",
       icon: "🛡️",
       image: "./assets/service-images/life/whole-life.png"
     },
     {
       title: "Engineering Insurance",
       description: "Construction All Risks (CAR), Erection All Risks (EAR), and Plant All Risks (PAR).",
-      link: "/titpak-insurance/what-we-do/engineering-all-risks",
+      link: "/what-we-do/engineering-all-risks",
       icon: "🏗️",
       image: "./assets/service-images/engineering/1.jpg"
     },
@@ -153,7 +153,7 @@ export default function Home() {
           <Stack direction={{ xs: "column", sm: "row" }} spacing={2}>
             <Button
               component={Link}
-              to="/titpak-insurance/get-quote"
+              to="/get-quote"
               variant="contained"
               sx={{
                 backgroundColor: "#003366",
