@@ -17,6 +17,7 @@ import SchoolIcon from "@mui/icons-material/School";
 import StarIcon from "@mui/icons-material/Star";
 import TrendingUpIcon from "@mui/icons-material/TrendingUp";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
+import baImage from "../assets/BA.JPEG";
 
 // Fade-in animation
 const fadeIn = keyframes`
@@ -182,6 +183,7 @@ export default function Leadership() {
       {/* MD/CEO Profile */}
       <Box sx={{ mb: 8 }}>
         <Grid container spacing={6} alignItems="flex-start">
+          {/* Card on the left */}
           <Grid item xs={12} md={4}>
             <Card
               elevation={0}
@@ -204,30 +206,31 @@ export default function Leadership() {
                 }}
               >
                 <Avatar
+                  src={baImage}
+                  alt="Bamidele Basil Akinsika"
                   sx={{
-                    width: 120,
-                    height: 120,
+                    width: 250,
+                    height: 250,
                     mx: "auto",
                     mb: 3,
                     bgcolor: "rgba(255,255,255,0.2)",
-                    fontSize: "3rem",
-                    fontWeight: "bold",
+                    border: "3px solid rgba(255,255,255,0.3)",
+                    boxShadow: "0 4px 20px rgba(0,0,0,0.2)",
                   }}
-                >
-                  BA
-                </Avatar>
-                <Typography variant="h5" sx={{ fontWeight: 700, mb: 1 }}>
-                  Mr. Bamidele Basil Akinsika
-                </Typography>
-                <Typography variant="body1" sx={{ opacity: 0.9 }}>
-                  Managing Director/Chief Executive Officer
-                </Typography>
+                />
+                
               </Box>
               <CardContent sx={{ p: 4 }}>
                 <Box sx={{ mb: 3 }}>
+                <Typography variant="h5" sx={{ fontWeight: 700, mb: 1 }}>
+                  Mr. Bamidele Basil Akinsika
+                </Typography>
+                <Typography variant="body1" sx={{ opacity: 0.9, mb: 1 }}>
+                  Managing Director/Chief Executive Officer
+                </Typography>
                   <Typography variant="body2" sx={{ color: "#666", mb: 1 }}>
                     <LocationOnIcon
-                      sx={{ fontSize: 16, mr: 0.5, verticalAlign: "middle" }}
+                      sx={{ fontSize: 16,mr: 0.5, verticalAlign: "middle" }}
                     />
                     Nigeria
                   </Typography>
@@ -253,8 +256,9 @@ export default function Leadership() {
             </Card>
           </Grid>
 
+          {/* Leadership Profile text on the right */}
           <Grid item xs={12} md={8}>
-            <Box sx={{ mb: 6 }}>
+            <Box sx={{ pl: { xs: 0, md: 2 } }}>
               <Typography
                 variant="h3"
                 sx={{
@@ -294,41 +298,41 @@ export default function Leadership() {
                 institutions.
               </Typography>
             </Box>
-
-            {/* Professional Achievements */}
-            <Box sx={{ mb: 6 }}>
-              <Typography
-                variant="h4"
-                sx={{
-                  color: "#003366",
-                  mb: 3,
-                  fontWeight: 700,
-                }}
-              >
-                Professional Achievements
-              </Typography>
-              <Grid container spacing={2}>
-                {professionalAchievements.map((achievement, index) => (
-                  <Grid item xs={12} sm={6} key={index}>
-                    <Box
-                      sx={{ display: "flex", alignItems: "flex-start", mb: 2 }}
-                    >
-                      <StarIcon
-                        sx={{ color: "#003366", mr: 2, mt: 0.5, fontSize: 20 }}
-                      />
-                      <Typography
-                        variant="body1"
-                        sx={{ color: "rgba(0,0,0,0.7)", lineHeight: 1.6 }}
-                      >
-                        {achievement}
-                      </Typography>
-                    </Box>
-                  </Grid>
-                ))}
-              </Grid>
-            </Box>
           </Grid>
         </Grid>
+
+        {/* Professional Achievements */}
+        <Box sx={{ mb: 6, mt: 6 }}>
+          <Typography
+            variant="h4"
+            sx={{
+              color: "#003366",
+              mb: 3,
+              fontWeight: 700,
+            }}
+          >
+            Professional Achievements
+          </Typography>
+          <Grid container spacing={2}>
+            {professionalAchievements.map((achievement, index) => (
+              <Grid item xs={12} sm={6} key={index}>
+                <Box
+                  sx={{ display: "flex", alignItems: "flex-start", mb: 2 }}
+                >
+                  <StarIcon
+                    sx={{ color: "#003366", mr: 2, mt: 0.5, fontSize: 20 }}
+                  />
+                  <Typography
+                    variant="body1"
+                    sx={{ color: "rgba(0,0,0,0.7)", lineHeight: 1.6 }}
+                  >
+                    {achievement}
+                  </Typography>
+                </Box>
+              </Grid>
+            ))}
+          </Grid>
+        </Box>
       </Box>
 
       {/* Career Timeline */}
