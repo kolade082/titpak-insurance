@@ -4,10 +4,10 @@ import emailjs from "@emailjs/browser";
 // DO NOT commit `src/config/emailjs.js` with real credentials — that's why
 // we provide this template.
 // Read credentials from Vite env vars (set these in .env.local or your hosting platform)
-export const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
-export const CONTACT_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_CONTACT_TEMPLATE_ID;
-export const CLAIMS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_CLAIMS_TEMPLATE_ID;
-export const PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+export const SERVICE_ID = "service_ss5qw1c";
+export const CONTACT_TEMPLATE_ID = "template_3yxdyjv";
+export const CLAIMS_TEMPLATE_ID = "template_xgntrn3";
+export const PUBLIC_KEY = "L-OHU18XoRrMAL_F8";
 
 if (!PUBLIC_KEY) {
   console.error("❌ EmailJS public key missing. Add VITE_EMAILJS_PUBLIC_KEY to .env or hosting panel.");
