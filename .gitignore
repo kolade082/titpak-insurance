@@ -109,7 +109,8 @@ temp/
 
 # EmailJS sensitive files
 # Keep EmailJS config private for security
-src/config/emailjs.js
+# If you want to keep a local copy with secrets, add it to .env.local instead.
+# The repository should include a non-secret `src/config/emailjs.js` that reads VITE_ env vars.
 
 # Email templates (optional - uncomment if you want to keep them private)
 # email-templates/
