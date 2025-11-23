@@ -5,6 +5,9 @@ on:
     branches: [ main ]
   workflow_dispatch: {}
 
+permissions:
+  contents: write
+
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
@@ -36,4 +39,4 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "${{ github.actor }}@users.noreply.github.com"
           # Use gh-pages with an access-token-authenticated repo URL so the runner can push
-          npx gh-pages -d dist --repo "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}"
+          npx gh-pages -d dist --repo "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}"
