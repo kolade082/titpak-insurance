@@ -1,5 +1,7 @@
 import React from "react";
 import InsuranceServicePage from "../../components/InsuranceServicePage";
+import whole1 from "../../assets/service-images/life/whole-life.png";
+import whole2 from "../../assets/service-images/life/whole-life-2.jpg";
 
 const WholeLifeInsurance = () => {
   const serviceData = {
@@ -81,10 +83,7 @@ const WholeLifeInsurance = () => {
     }
   ];
 
-  const images = [
-    `${import.meta.env.BASE_URL}assets/service-images/life/whole-life.png`,
-    `${import.meta.env.BASE_URL}assets/service-images/life/whole-life-2.jpg`
-  ];
+  const images = [whole1, whole2];
 
   return (
     <InsuranceServicePage

@@ -1,5 +1,7 @@
 import React from "react";
 import InsuranceServicePage from "../../components/InsuranceServicePage";
+import marine1 from "../../assets/service-images/marine/1.jpg";
+import marine2 from "../../assets/service-images/marine/2.jpg";
 
 const MarineHullCargoInsurance = () => {
   const serviceData = {
@@ -96,10 +98,7 @@ const MarineHullCargoInsurance = () => {
     }
   ];
 
-  const images = [
-    `${import.meta.env.BASE_URL}assets/service-images/marine/1.jpg`,
-    `${import.meta.env.BASE_URL}assets/service-images/marine/2.jpg`
-  ];
+  const images = [marine1, marine2];
 
   return (
     <InsuranceServicePage

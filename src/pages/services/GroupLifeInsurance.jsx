@@ -1,5 +1,7 @@
 import React from "react";
 import InsuranceServicePage from "../../components/InsuranceServicePage";
+import gl1 from "../../assets/service-images/life/group-life.jpg";
+import gl2 from "../../assets/service-images/life/group-life-2.png";
 
 const GroupLifeInsurance = () => {
   const serviceData = {
@@ -81,10 +83,7 @@ const GroupLifeInsurance = () => {
     }
   ];
 
-  const images = [
-    `${import.meta.env.BASE_URL}assets/service-images/life/group-life.jpg`,
-    `${import.meta.env.BASE_URL}assets/service-images/life/group-life-2.png`
-  ];
+  const images = [gl1, gl2];
 
   return (
     <InsuranceServicePage

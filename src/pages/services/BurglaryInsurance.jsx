@@ -1,5 +1,7 @@
 import React from "react";
 import InsuranceServicePage from "../../components/InsuranceServicePage";
+import burglary1 from "../../assets/service-images/burglary/1.jpg";
+import burglary2 from "../../assets/service-images/burglary/2.jpeg";
 
 const BurglaryInsurance = () => {
   const serviceData = {
@@ -80,10 +82,7 @@ const BurglaryInsurance = () => {
       description: "Coverage requires evidence of forced entry to validate burglary claims."
     }
   ];
-  const images = [
-    `${import.meta.env.BASE_URL}assets/service-images/burglary/1.jpg`,
-    `${import.meta.env.BASE_URL}assets/service-images/burglary/2.jpeg`
-  ];
+  const images = [burglary1, burglary2];
 
   return (
     <InsuranceServicePage

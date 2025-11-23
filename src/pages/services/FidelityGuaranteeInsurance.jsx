@@ -1,5 +1,7 @@
 import React from "react";
 import InsuranceServicePage from "../../components/InsuranceServicePage";
+import fidelity1 from "../../assets/service-images/fidelity-guarantee/1.jpg";
+import fidelity2 from "../../assets/service-images/fidelity-guarantee/2.jpg";
 
 const FidelityGuaranteeInsurance = () => {
   const serviceData = {
@@ -81,10 +83,7 @@ const FidelityGuaranteeInsurance = () => {
     }
   ];
 
-  const images = [
-    `${import.meta.env.BASE_URL}assets/service-images/fidelity-guarantee/1.jpg`,
-    `${import.meta.env.BASE_URL}assets/service-images/fidelity-guarantee/2.jpg`
-  ];
+  const images = [fidelity1, fidelity2];
 
   return (
     <InsuranceServicePage

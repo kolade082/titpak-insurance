@@ -1,5 +1,7 @@
 import React from "react";
 import InsuranceServicePage from "../../components/InsuranceServicePage";
+import termLife1 from "../../assets/service-images/life/term-life.webp";
+import termLife2 from "../../assets/service-images/life/term-life-2.jpeg";
 
 const TermLifeInsurance = () => {
   const serviceData = {
@@ -81,10 +83,7 @@ const TermLifeInsurance = () => {
     }
   ];
 
-  const images = [
-    `${import.meta.env.BASE_URL}assets/service-images/life/term-life.webp`,
-    `${import.meta.env.BASE_URL}assets/service-images/life/term-life-2.jpeg`
-  ];
+  const images = [termLife1, termLife2];
 
   return (
     <InsuranceServicePage

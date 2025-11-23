@@ -1,5 +1,7 @@
 import React from "react";
 import InsuranceServicePage from "../../components/InsuranceServicePage";
+import git1 from "../../assets/service-images/goods-in-transit/1.jpg";
+import git2 from "../../assets/service-images/goods-in-transit/2.webp";
 
 const GoodsInTransitInsurance = () => {
   const serviceData = {
@@ -81,10 +83,7 @@ const GoodsInTransitInsurance = () => {
     }
   ];
 
-  const images = [
-    `${import.meta.env.BASE_URL}assets/service-images/goods-in-transit/1.jpg`,
-    `${import.meta.env.BASE_URL}assets/service-images/goods-in-transit/2.webp`
-  ];
+  const images = [git1, git2];
 
   return (
     <InsuranceServicePage

@@ -22,6 +22,12 @@ import { Link } from "react-router-dom";
 
 import ClaimFormSection from "../components/ClaimFormSection";
 import FAQSection from "../components/FAQSection";
+import aviation1 from "../assets/service-images/aviation/1.webp";
+import marine1 from "../assets/service-images/marine/1.jpg";
+import motor1 from "../assets/service-images/motor/1.webp";
+import fire2 from "../assets/service-images/fire/2.jpg";
+import lifeWhole from "../assets/service-images/life/whole-life.png";
+import engineering1 from "../assets/service-images/engineering/1.jpg";
 
 // Fade-in animation
 const fadeIn = keyframes`
@@ -56,42 +62,42 @@ export default function Home() {
       description: "Comprehensive coverage for aircraft, airlines, and aviation-related risks.",
       link: "/what-we-do/aviation",
       icon: "✈️",
-      image: "./assets/service-images/aviation/1.webp"
+      image: aviation1
     },
     {
       title: "Marine Hull & Cargo",
       description: "Protection for vessels, cargo, and marine transportation risks.",
       link: "/what-we-do/marine-hull-cargo",
       icon: "🚢",
-      image: "./assets/service-images/marine/1.jpg"
+      image: marine1
     },
     {
       title: "Motor Insurance",
       description: "Third party, fire & theft, and comprehensive vehicle coverage.",
       link: "/what-we-do/motor",
       icon: "🚗",
-      image: "./assets/service-images/motor/1.webp"
+      image: motor1
     },
     {
       title: "Fire Insurance",
       description: "Protection against fire, lightning, and special perils for property.",
       link: "/what-we-do/fire",
       icon: "🔥",
-      image: "./assets/service-images/fire/2.jpg"
+      image: fire2
     },
     {
       title: "Life Insurance",
       description: "Whole life, term life, and group life insurance solutions.",
       link: "/what-we-do/life-insurance/whole-life",
       icon: "🛡️",
-      image: "./assets/service-images/life/whole-life.png"
+      image: lifeWhole
     },
     {
       title: "Engineering Insurance",
       description: "Construction All Risks (CAR), Erection All Risks (EAR), and Plant All Risks (PAR).",
       link: "/what-we-do/engineering-all-risks",
       icon: "🏗️",
-      image: "./assets/service-images/engineering/1.jpg"
+      image: engineering1
     },
   ];
 
