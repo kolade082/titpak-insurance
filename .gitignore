@@ -139,7 +139,6 @@ firebase-debug.*.log
 # Note: track Actions workflows but ignore other .github metadata if desired.
 !.github/workflows/
 !.github/workflows/*
-.github/
 
 # Local SSL certificates
 *.pem
