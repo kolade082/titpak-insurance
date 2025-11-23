@@ -35,4 +35,5 @@ jobs:
           # configure a committer identity for the runner so gh-pages can push
           git config --global user.name "github-actions[bot]"
           git config --global user.email "${{ github.actor }}@users.noreply.github.com"
-          npm run deploy
+          # Use gh-pages with an access-token-authenticated repo URL so the runner can push
+          npx gh-pages -d dist --repo "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}"
