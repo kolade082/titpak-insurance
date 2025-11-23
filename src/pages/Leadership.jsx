@@ -17,6 +17,7 @@ import SchoolIcon from "@mui/icons-material/School";
 import StarIcon from "@mui/icons-material/Star";
 import TrendingUpIcon from "@mui/icons-material/TrendingUp";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
+import baImage from "../assets/BA.JPEG";
 
 // Fade-in animation
 const fadeIn = keyframes`
@@ -205,7 +206,7 @@ export default function Leadership() {
                 }}
               >
                 <Avatar
-                  src={`${import.meta.env.BASE_URL}BA.JPEG`}
+                  src={baImage}
                   alt="Bamidele Basil Akinsika"
                   sx={{
                     width: 250,
