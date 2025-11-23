@@ -10,6 +10,14 @@ import {
   Paper,
   Avatar,
 } from "@mui/material";
+// MUI Lab Timeline components
+import Timeline from '@mui/lab/Timeline';
+import TimelineItem from '@mui/lab/TimelineItem';
+import TimelineSeparator from '@mui/lab/TimelineSeparator';
+import TimelineConnector from '@mui/lab/TimelineConnector';
+import TimelineContent from '@mui/lab/TimelineContent';
+import TimelineDot from '@mui/lab/TimelineDot';
+import TimelineOppositeContent from '@mui/lab/TimelineOppositeContent';
 import { keyframes } from "@mui/system";
 import BusinessIcon from "@mui/icons-material/Business";
 import WorkIcon from "@mui/icons-material/Work";
@@ -18,6 +26,7 @@ import StarIcon from "@mui/icons-material/Star";
 import TrendingUpIcon from "@mui/icons-material/TrendingUp";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import baImage from "../assets/BA.JPEG";
+
 
 // Fade-in animation
 const fadeIn = keyframes`
@@ -182,125 +191,122 @@ export default function Leadership() {
 
       {/* MD/CEO Profile */}
       <Box sx={{ mb: 8 }}>
-        <Grid container spacing={6} alignItems="flex-start">
-          {/* Card on the left */}
-          <Grid item xs={12} md={6} lg={5}>
+        <Grid
+          container
+          spacing={4}
+          sx={{
+            width: "100%",
+            margin: 0,
+            flexWrap: { xs: "wrap", md: "nowrap" },
+          }}
+        >
+          {/* LEFT SIDE */}
+          <Grid
+            item
+            xs={12}
+            md={5}
+            sx={{
+              minWidth: { md: "40%" },
+              display: "flex",
+              justifyContent: "center",
+            }}
+          >
             <Card
-              elevation={0}
+              elevation={2}
               sx={{
+                width: "100%",
+                maxWidth: 420,
                 borderRadius: 4,
-                border: "1px solid #e6eef8",
-                backgroundColor: "#ffffff",
                 overflow: "hidden",
-                position: "sticky",
-                top: 100,
               }}
             >
               <Box
                 sx={{
                   background:
                     "linear-gradient(135deg, #003366 0%, #004a99 100%)",
-                  color: "white",
-                  p: 4,
                   textAlign: "center",
+                  p: 4,
+                  color: "white",
                 }}
               >
                 <Avatar
                   src={baImage}
-                  alt="Bamidele Basil Akinsika"
                   sx={{
-                    width: 250,
-                    height: 250,
+                    width: 200,
+                    height: 200,
                     mx: "auto",
-                    mb: 3,
-                    bgcolor: "rgba(255,255,255,0.2)",
-                    border: "3px solid rgba(255,255,255,0.3)",
-                    boxShadow: "0 4px 20px rgba(0,0,0,0.2)",
+                    mb: 2,
                   }}
                 />
-                
               </Box>
-              <CardContent sx={{ p: 4 }}>
-                <Box sx={{ mb: 3 }}>
+
+              <CardContent sx={{ p: 3 }}>
                 <Typography variant="h5" sx={{ fontWeight: 700, mb: 1 }}>
                   Mr. Bamidele Basil Akinsika
                 </Typography>
-                <Typography variant="body1" sx={{ opacity: 0.9, mb: 1 }}>
+                <Typography sx={{ opacity: 0.9, mb: 1 }}>
                   Managing Director/Chief Executive Officer
                 </Typography>
-                  <Typography variant="body2" sx={{ color: "#666", mb: 1 }}>
-                    <LocationOnIcon
-                      sx={{ fontSize: 16,mr: 0.5, verticalAlign: "middle" }}
-                    />
-                    Nigeria
-                  </Typography>
-                  <Typography variant="body2" sx={{ color: "#666", mb: 1 }}>
-                    <WorkIcon
-                      sx={{ fontSize: 16, mr: 0.5, verticalAlign: "middle" }}
-                    />
-                    Insurance & Reinsurance
-                  </Typography>
-                  <Typography variant="body2" sx={{ color: "#666" }}>
-                    <TrendingUpIcon
-                      sx={{ fontSize: 16, mr: 0.5, verticalAlign: "middle" }}
-                    />
-                    30+ Years Experience
-                  </Typography>
-                </Box>
-                <Chip
-                  label="Current Role"
-                  color="primary"
-                  sx={{ fontWeight: 600 }}
-                />
+
+                <Typography sx={{ display: "flex", alignItems: "center", mb: 1 }}>
+                  <LocationOnIcon sx={{ fontSize: 16, mr: 0.5 }} />
+                  Nigeria
+                </Typography>
+
+                <Typography sx={{ display: "flex", alignItems: "center", mb: 1 }}>
+                  <WorkIcon sx={{ fontSize: 16, mr: 0.5 }} />
+                  Insurance & Reinsurance
+                </Typography>
+
+                <Typography sx={{ display: "flex", alignItems: "center" }}>
+                  <TrendingUpIcon sx={{ fontSize: 16, mr: 0.5 }} />
+                  30+ Years Experience
+                </Typography>
               </CardContent>
             </Card>
           </Grid>
 
-          {/* Leadership Profile text on the right */}
-          <Grid item xs={12} md={6} lg={7}>
+          {/* RIGHT SIDE */}
+          <Grid
+            item
+            xs={12}
+            md={7}
+            sx={{
+              minWidth: { md: "50%" },
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+              alignItems: "center",
+              textAlign: "center",
+              px: { xs: 0, md: 4 },
+            }}
+          >
 
-            <Box sx={{ pl: { xs: 0, md: 2 } }}>
-              <Typography
-                variant="h3"
-                sx={{
-                  color: "#003366",
-                  mb: 3,
-                  fontWeight: 800,
-                }}
-              >
-                Leadership Profile
-              </Typography>
-              <Typography
-                variant="body1"
-                sx={{
-                  color: "rgba(0,0,0,0.7)",
-                  mb: 3,
-                  lineHeight: 1.7,
-                  fontSize: "1.1rem",
-                }}
-              >
-                Mr. B.B. Akinsika leads the company's strategic growth and
-                business development. He also currently serves as a Consultant
-                to Great Nigeria Insurance Plc on Reinsurance Portfolio
-                Management.
-              </Typography>
-              <Typography
-                variant="body1"
-                sx={{
-                  color: "rgba(0,0,0,0.7)",
-                  lineHeight: 1.7,
-                  fontSize: "1.1rem",
-                }}
-              >
-                With over three decades of experience spanning insurance,
-                reinsurance, and financial services, he has built a
-                distinguished career in underwriting, claims, reinsurance, and
-                insurance brokerage, working for both local and international
-                institutions.
-              </Typography>
-            </Box>
+            <Typography
+              sx={{
+                fontSize: "1.1rem",
+                lineHeight: 1.7,
+                opacity: 0.9,
+                mb: 3,
+                textAlign: "center",
+              }}
+            >
+              Mr. B.B. Akinsika leads the company's strategic growth and business development. He also currently serves as a Consultant to Great Nigeria Insurance Plc on Reinsurance Portfolio Management.
+            </Typography>
+
+            <Typography
+              sx={{
+                fontSize: "1.1rem",
+                lineHeight: 1.7,
+                opacity: 0.9,
+                textAlign: "center",
+              }}
+            >
+              With over three decades of experience spanning insurance, reinsurance, and financial services, he has built a distinguished career in underwriting, claims, reinsurance, and insurance brokerage, working for both local and international institutions.
+            </Typography>
           </Grid>
         </Grid>
+
 
         {/* Professional Achievements */}
         <Box sx={{ mb: 6, mt: 6 }}>
@@ -336,159 +342,85 @@ export default function Leadership() {
         </Box>
       </Box>
 
-      {/* Career Timeline */}
-      <Box sx={{ mb: 8 }}>
+      {/* Career Timeline (MUI Lab Timeline) */}
+      <Box sx={{ mb: 10 }}>
         <Box sx={{ textAlign: "center", mb: 6 }}>
-          <Typography
-            variant="h3"
-            sx={{
-              color: "#003366",
-              mb: 2,
-              fontWeight: 800,
-            }}
-          >
+          <Typography variant="h3" sx={{ color: "#003366", mb: 2, fontWeight: 800 }}>
             Career Journey
           </Typography>
-          <Typography
-            variant="body1"
-            sx={{
-              color: "rgba(0,0,0,0.7)",
-              maxWidth: 600,
-              mx: "auto",
-            }}
-          >
+          <Typography variant="body1" sx={{ color: "rgba(0,0,0,0.7)", maxWidth: 700, mx: "auto" }}>
             A comprehensive overview of Mr. Akinsika's distinguished career path
           </Typography>
         </Box>
 
-        <Box sx={{ width: "100%" }}>
-          <Grid container spacing={3} sx={{ width: "100%" }}>
-            {careerTimeline.map((item, index) => (
-              <Grid
-                item
-                xs={12}
-                sm={6}
-                lg={4}
-                key={index}
-                sx={{ width: "100%" }}
-              >
-                <Card
-                  elevation={0}
-                  sx={{
-                    width: "100%",
-                    height: "100%",
-                    borderRadius: 6,
-                    background:
-                      "linear-gradient(135deg, #ffffff 0%, #f8faff 100%)",
-                    border: "1px solid #e1e8f0",
-                    transition: "all 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
-                    position: "relative",
-                    overflow: "hidden",
-                    "&::before": {
-                      content: '""',
-                      position: "absolute",
-                      top: 0,
-                      left: 0,
-                      right: 0,
-                      height: "4px",
-                      background:
-                        "linear-gradient(90deg, #003366 0%, #004a99 100%)",
-                      transform: "scaleX(0)",
-                      transition: "transform 0.4s ease",
-                    },
-                    "&:hover": {
-                      transform: "translateY(-8px)",
-                      boxShadow: "0 20px 40px rgba(0, 51, 102, 0.15)",
-                      borderColor: "#003366",
-                      "&::before": {
-                        transform: "scaleX(1)",
-                      },
-                    },
-                  }}
-                >
-                  <CardContent
+        <Timeline position="alternate">
+          {careerTimeline
+            .slice()
+            .reverse()
+            .map((item, index, arr) => {
+              const contentOnRight = index % 2 === 0; // when true, content is on the right
+              const oppositeTextAlign = contentOnRight ? { md: "left" } : { md: "right" };
+              const contentTextAlign = contentOnRight ? { md: "right" } : { md: "left" };
+
+              return (
+                <TimelineItem key={item.year + "-" + item.title}>
+                  <TimelineOppositeContent
                     sx={{
-                      p: { xs: 2, md: 4 },
-                      textAlign: "center",
-                      width: "100%",
+                      m: "auto 0",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: contentOnRight ? { md: "flex-end" } : { md: "flex-start" },
+                      flex: { md: "0 0 16%" },
+                      pr: { md: 1 },
+                      textAlign: { xs: "left", ...oppositeTextAlign },
                     }}
                   >
-                    <Box
+                    <Typography variant="subtitle1" sx={{ fontWeight: 700, color: "#003366" }}>
+                      {item.year}
+                    </Typography>
+                  </TimelineOppositeContent>
+
+                  <TimelineSeparator sx={{ mx: { xs: 0, md: 2 } }}>
+                    <TimelineDot
                       sx={{
-                        width: { xs: 60, md: 70 },
-                        height: { xs: 60, md: 70 },
-                        borderRadius: "50%",
-                        background:
-                          "linear-gradient(135deg, #003366 0%, #004a99 100%)",
-                        color: "white",
+                        bgcolor: "#003366",
+                        color: "#fff",
+                        width: 44,
+                        height: 44,
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
-                        mx: "auto",
-                        mb: { xs: 3, md: 4 },
-                        boxShadow: "0 8px 25px rgba(0, 51, 102, 0.2)",
-                        position: "relative",
+                        zIndex: 2,
+                        boxShadow: "0 6px 18px rgba(0,0,0,0.08)",
                       }}
                     >
-                      {React.cloneElement(item.icon, {
-                        sx: { fontSize: { xs: 28, md: 32 } },
-                      })}
-                    </Box>
-                    <Chip
-                      label={item.year}
-                      color="primary"
-                      size="medium"
-                      sx={{
-                        fontWeight: 600,
-                        mb: { xs: 3, md: 4 },
-                        px: { xs: 2, md: 3 },
-                        py: 1,
-                        fontSize: { xs: "0.8rem", md: "0.9rem" },
-                        background:
-                          "linear-gradient(135deg, #003366 0%, #004a99 100%)",
-                        color: "white",
-                        boxShadow: "0 4px 15px rgba(0, 51, 102, 0.2)",
-                      }}
-                    />
-                    <Typography
-                      variant="h6"
-                      sx={{
-                        color: "#003366",
-                        fontWeight: 700,
-                        mb: { xs: 2, md: 3 },
-                        fontSize: { xs: "1.1rem", md: "1.3rem" },
-                      }}
-                    >
-                      {item.title}
-                    </Typography>
-                    <Typography
-                      variant="body2"
-                      sx={{
-                        color: "#004a99",
-                        fontWeight: 600,
-                        mb: { xs: 2, md: 3 },
-                        fontSize: { xs: "0.9rem", md: "1rem" },
-                      }}
-                    >
-                      {item.company}
-                    </Typography>
-                    <Typography
-                      variant="body2"
-                      sx={{
-                        color: "rgba(0,0,0,0.7)",
-                        lineHeight: 1.7,
-                        fontSize: { xs: "0.85rem", md: "0.95rem" },
-                      }}
-                    >
-                      {item.role}
-                    </Typography>
-                  </CardContent>
-                </Card>
-              </Grid>
-            ))}
-          </Grid>
-        </Box>
+                      {React.cloneElement(item.icon, { sx: { fontSize: 20 } })}
+                    </TimelineDot>
+                    {index !== arr.length - 1 && <TimelineConnector sx={{ bgcolor: "#e6eef8" }} />}
+                  </TimelineSeparator>
+
+                  <TimelineContent
+                    sx={{
+                      py: "12px",
+                      px: 2,
+                      flex: { md: "0 0 60%" },
+                      textAlign: { xs: "left", ...contentTextAlign },
+                    }}
+                  >
+                    <Card elevation={0} sx={{ borderRadius: 2, border: "1px solid #eef4fb", maxWidth: "100%" }}>
+                      <CardContent sx={{ p: 2.5, textAlign: { xs: "left", ...contentTextAlign } }}>
+                        <Typography variant="h6" sx={{ fontWeight: 700, color: "#003366" }}>{item.title}</Typography>
+                        <Typography variant="subtitle2" sx={{ color: "#004a99", fontWeight: 600 }}>{item.company}</Typography>
+                        <Typography variant="body2" sx={{ color: "rgba(0,0,0,0.7)", mt: 1 }}>{item.role}</Typography>
+                      </CardContent>
+                    </Card>
+                  </TimelineContent>
+                </TimelineItem>
+              );
+            })}
+        </Timeline>
       </Box>
+
     </Container>
   );
 }
