@@ -4,22 +4,17 @@ import emailjs from "@emailjs/browser";
 // DO NOT commit `src/config/emailjs.js` with real credentials — that's why
 // we provide this template.
 // Read credentials from Vite env vars (set these in .env.local or your hosting platform)
-export const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID || "service_mbgbjel";
-export const CONTACT_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_CONTACT_TEMPLATE_ID || "template_2doqx3q";
-export const CLAIMS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_CLAIMS_TEMPLATE_ID || "template_d4k3k0g";
-export const PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY || "";
+export const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+export const CONTACT_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_CONTACT_TEMPLATE_ID;
+export const CLAIMS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_CLAIMS_TEMPLATE_ID;
+export const PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
-// Initialize EmailJS client when PUBLIC_KEY is present
-if (PUBLIC_KEY) {
-  try {
-    emailjs.init(PUBLIC_KEY);
-    console.info("EmailJS initialized from env");
-  } catch (err) {
-    console.warn("emailjs.init failed:", err);
-  }
+if (!PUBLIC_KEY) {
+  console.error("❌ EmailJS public key missing. Add VITE_EMAILJS_PUBLIC_KEY to .env or hosting panel.");
 } else {
-  console.warn("VITE_EMAILJS_PUBLIC_KEY not set. EmailJS may not be initialized.");
+  emailjs.init(PUBLIC_KEY);
 }
+
 
 export async function sendContactEmail(formData) {
   try {
@@ -34,7 +29,8 @@ export async function sendContactEmail(formData) {
     const response = await emailjs.send(
       SERVICE_ID,
       CONTACT_TEMPLATE_ID,
-      templateParams
+      templateParams,
+      PUBLIC_KEY
     );
 
     return { success: true, response };
@@ -60,7 +56,8 @@ export async function sendClaimsEmail(formData) {
     const response = await emailjs.send(
       SERVICE_ID,
       CLAIMS_TEMPLATE_ID,
-      templateParams
+      templateParams,
+      PUBLIC_KEY
     );
 
     return { success: true, response };

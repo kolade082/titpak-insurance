@@ -184,7 +184,7 @@ export default function Leadership() {
       <Box sx={{ mb: 8 }}>
         <Grid container spacing={6} alignItems="flex-start">
           {/* Card on the left */}
-          <Grid item xs={12} md={4}>
+          <Grid item xs={12} md={6} lg={5}>
             <Card
               elevation={0}
               sx={{
@@ -257,7 +257,8 @@ export default function Leadership() {
           </Grid>
 
           {/* Leadership Profile text on the right */}
-          <Grid item xs={12} md={8}>
+          <Grid item xs={12} md={6} lg={7}>
+
             <Box sx={{ pl: { xs: 0, md: 2 } }}>
               <Typography
                 variant="h3"
