@@ -13,18 +13,15 @@
 <body>
   <div id="root"></div>
 
-  <!-- Start Single Page Apps for GitHub Pages -->
   <script>
-  (function(l) {
-    const params = new URLSearchParams(l.search);
-    if (params.has("redirect")) {
-      const decoded = decodeURIComponent(params.get("redirect"));
-      window.history.replaceState(null, null, decoded);
-    }
-  })(window.location);
-</script>
-  </script> -->
-  <!-- End Single Page Apps for GitHub Pages -->
+    (function (l) {
+      const params = new URLSearchParams(l.search);
+      if (params.has("redirect")) {
+        const decoded = decodeURIComponent(params.get("redirect"));
+        window.history.replaceState(null, null, decoded);
+      }
+    })(window.location);
+  </script>
 </body>
 
 </html>
