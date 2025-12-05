@@ -13,7 +13,16 @@
   <script type="module" src="/src/main.jsx"></script>
 
   <!-- Start Single Page Apps for GitHub Pages -->
-  <!-- <script type="text/javascript">
+  <script>
+  (function(l) {
+    const params = new URLSearchParams(l.search);
+    if (params.has("redirect")) {
+      const decoded = decodeURIComponent(params.get("redirect"));
+      window.history.replaceState(null, null, decoded);
+    }
+  })(window.location);
+</script>
+
     // Single Page Apps for GitHub Pages
     // MIT License
     // https://github.com/rafgraph/spa-github-pages
