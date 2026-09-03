@@ -15,6 +15,7 @@ import {
   Collapse,
   ListItemButton,
   ListItemIcon,
+  Tooltip,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
@@ -67,6 +68,19 @@ export default function NavBar() {
     setSubMenuAnchorEl(null);
     setSubMenuItems([]);
   };
+
+  const loginTooltip = (
+    <Box sx={{ p: 1, maxWidth: 360 }}>
+      <Typography variant="subtitle2" sx={{ fontWeight: 700, mb: 0.5 }}>
+        How to purchase 3rd‑Party Motor Insurance
+      </Typography>
+      <Typography variant="body2">1. Click the Login button to open Titpak's portal.</Typography>
+      <Typography variant="body2">2. Register (provide name, email, phone) — your username & password will be shown at the top of the page.</Typography>
+      <Typography variant="body2">3. Use the credentials to log in again, then click "Buy 3rd‑Party Insurance".</Typography>
+      <Typography variant="body2">4. Select an insurer, click "PROCEED", fill required fields and tick the declaration box.</Typography>
+      <Typography variant="body2">5. Review carefully and click "PAY ONLINE USING CARD". Download/print the certificate after payment.</Typography>
+    </Box>
+  );
 
   // Mobile drawer
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -461,6 +475,33 @@ export default function NavBar() {
             >
               FAQs
             </Button>
+            <Tooltip title={loginTooltip} arrow>
+              <Button
+                variant="contained"
+                component="a"
+                href="https://www.titpakinsurancebrokersng.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                sx={{
+                  px: 2,
+                  py: 1,
+                  borderRadius: 2,
+                  textTransform: "none",
+                  fontWeight: 700,
+                  fontSize: "1rem",
+                  background: "linear-gradient(90deg,#ffb300,#ff9f00)",
+                  color: "#003366",
+                  boxShadow: "0 6px 14px rgba(255,159,0,0.18)",
+                  "&:hover": {
+                    background: "linear-gradient(90deg,#ff9f00,#ff8a00)",
+                    transform: "translateY(-2px)",
+                  },
+                  transition: "all 0.18s ease",
+                }}
+              >
+                Login
+              </Button>
+            </Tooltip>
           </Box>
 
           {/* Mobile Hamburger */}
@@ -807,6 +848,33 @@ export default function NavBar() {
                 }}
               />
             </ListItem>
+
+            {/* Login */}
+            <Tooltip title={loginTooltip} arrow>
+              <ListItem
+                button
+                component="a"
+                href="https://www.titpakinsurancebrokersng.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setDrawerOpen(false)}
+                sx={{
+                  borderRadius: 2,
+                  mb: 0.5,
+                  background: "linear-gradient(90deg,#ffb300,#ff9f00)",
+                  "&:hover": { background: "linear-gradient(90deg,#ff9f00,#ff8a00)" },
+                }}
+              >
+                <ListItemText
+                  primary="Login"
+                  sx={{
+                    color: "#003366",
+                    fontWeight: 700,
+                    "& .MuiTypography-root": { fontSize: "1rem" },
+                  }}
+                />
+              </ListItem>
+            </Tooltip>
           </List>
         </Box>
       </Drawer>

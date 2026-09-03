@@ -18,6 +18,18 @@ const fadeIn = keyframes`
 export default function FAQ() {
   const faqs = [
     {
+      q: "How do I register to purchase 3rd‑party motor insurance?",
+      a: "Click the prominent 'Login' button which opens Titpak's purchase portal. On the portal, choose 'Register' or 'Create Account', enter your name, email, phone number and any requested details, then submit. After successful registration the site will display your username and password — copy or note these details securely before leaving the page.",
+    },
+    {
+      q: "What should I do after registration?",
+      a: "Use the username and password shown to sign in. From your dashboard click 'Buy 3rd‑Party Insurance', select the insurer you want to purchase from, then click 'PROCEED'. Fill all required fields, tick the declaration box, review your entries carefully, and when ready click 'PAY ONLINE USING CARD' to complete payment. After payment, your motor insurance certificate will appear on-screen — download or print it immediately.",
+    },
+    {
+      q: "I can't find my username/password or the details didn't appear — what now?",
+      a: "First check the top of the registration confirmation page for the credentials (some portals display them immediately). Also check your email (including spam). If you still can't find them, do not re-register — contact Titpak support for help. Never share your password with others, and store credentials securely.",
+    },
+    {
       q: "How do I get a quote?",
       a: "Click 'Get a Quote,' answer a few questions, and an advisor will reach out with tailored options.",
     },
