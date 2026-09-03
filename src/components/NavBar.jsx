@@ -503,6 +503,36 @@ export default function NavBar() {
               </Button>
             </Tooltip>
           </Box>
+          {/* Mobile Login (visible outside hamburger) */}
+          <Box sx={{ display: { xs: 'inline-flex', sm: 'none' }, alignItems: 'center', mr: 1 }}>
+            <Tooltip title={loginTooltip} arrow>
+              <Button
+                variant="contained"
+                component="a"
+                href="https://www.titpakinsurancebrokersng.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                size="small"
+                sx={{
+                  px: 1.5,
+                  py: 0.5,
+                  borderRadius: 2,
+                  textTransform: "none",
+                  fontWeight: 700,
+                  fontSize: "0.9rem",
+                  background: "linear-gradient(90deg,#ffb300,#ff9f00)",
+                  color: "#003366",
+                  boxShadow: "0 6px 14px rgba(255,159,0,0.18)",
+                  "&:hover": {
+                    background: "linear-gradient(90deg,#ff9f00,#ff8a00)",
+                    transform: "translateY(-2px)",
+                  },
+                }}
+              >
+                Login
+              </Button>
+            </Tooltip>
+          </Box>
 
           {/* Mobile Hamburger */}
           <IconButton
@@ -850,31 +880,7 @@ export default function NavBar() {
             </ListItem>
 
             {/* Login */}
-            <Tooltip title={loginTooltip} arrow>
-              <ListItem
-                button
-                component="a"
-                href="https://www.titpakinsurancebrokersng.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => setDrawerOpen(false)}
-                sx={{
-                  borderRadius: 2,
-                  mb: 0.5,
-                  background: "linear-gradient(90deg,#ffb300,#ff9f00)",
-                  "&:hover": { background: "linear-gradient(90deg,#ff9f00,#ff8a00)" },
-                }}
-              >
-                <ListItemText
-                  primary="Login"
-                  sx={{
-                    color: "#003366",
-                    fontWeight: 700,
-                    "& .MuiTypography-root": { fontSize: "1rem" },
-                  }}
-                />
-              </ListItem>
-            </Tooltip>
+            {/* Login removed from drawer — visible as button outside hamburger on mobile */}
           </List>
         </Box>
       </Drawer>
